@@ -1,8 +1,10 @@
 import { useState } from 'react';
 
+import { FaUserAlt, FaHeadset, FaGhost } from 'react-icons/fa';
+
 import Head from 'next/head';
 
-import { FaUserAlt, FaHeadset, FaGhost } from 'react-icons/fa';
+import { OptionsFunc, OptionsType } from '@/Utils/Options';
 
 import { Header } from '@/Components/Header/Header';
 import { Timer } from '@/Components/Timer';
@@ -33,33 +35,48 @@ export default function Home() {
                   <Text className={'mb-2'}>Funcionário:</Text>
                   <Input.Root>
                     <Input.Icon icon={FaUserAlt} size={16} colored />
-                    <Input.Input type={'text'} id={'user'} placeholder='Digite o funcionário...'/>
+                    <Input.Select 
+                      placeholder='Selecione o funcionário...' 
+                      items={OptionsFunc} 
+                      id={'user'}
+                    />
                   </Input.Root>
                 </label>
                 <label htmlFor='client'>
                   <Text className={'mb-2'}>Cliente:</Text>
                   <Input.Root>
                     <Input.Icon icon={FaUserAlt} size={16} colored />
-                    <Input.Input type={'text'} id={'client'} placeholder='Digite o funcionário...'/>
+                    <Input.Select 
+                      placeholder='Selecione o cliente...' 
+                      items={OptionsFunc} 
+                      id={'client'}
+                    />
                   </Input.Root>
                 </label>
                 <label htmlFor='fantasy'>
                   <Text className={'mb-2'}>Fantasia:</Text>
                   <Input.Root>
                     <Input.Icon icon={FaGhost} size={16} colored />
-                    <Input.Input type={'text'} id={'fantasy'} placeholder='Digite o funcionário...'/>
+                    <Input.Select 
+                      placeholder='Selecione a fantasia...' 
+                      items={OptionsFunc} 
+                      id={'fantasy'}
+                    />
                   </Input.Root>
                 </label>
                 <label htmlFor='type'>
                   <Text className={'mb-2'}>Tipo:</Text>
                   <Input.Root>
                     <Input.Icon icon={FaHeadset} size={19} colored />
-                    <Input.Input type={'text'} id={'type'} placeholder='Digite o funcionário...'/>
+                    <Input.Select 
+                      placeholder='Selecione o tipo...' 
+                      items={OptionsType} 
+                      id={'type'}
+                    />
                   </Input.Root>
                 </label>
               </div>
               <div className='flex-1 h-[85%] p-5 flex flex-col'>
-                
               </div>
             </div>
           </form>
