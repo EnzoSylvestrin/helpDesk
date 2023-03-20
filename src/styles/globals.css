@@ -20,6 +20,28 @@ a {
   text-decoration: none;
 }
 
+::selection {
+  background-color: var(--main);
+}
+
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bgColor);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--textColor);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e8e8e8;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
