@@ -7,9 +7,13 @@ module.exports = {
     extend: {
       colors: {
         grayMain: '#ececec',
-        darkMain: '#333333',
+        darkMain: '#282828',
         lightHover: '#dfe0e0',
-        darkHover: '#444950'
+        darkHover: '#444950',
+        darkColor: 'rgb(23 23 23)',
+        lightColor: 'rgb(249 250 251)',
+        InputColorDark: '#302f2f',
+        InputColorLight: '#e6e6e6',
       }
     },
     fontSize: {

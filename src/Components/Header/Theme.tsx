@@ -1,7 +1,8 @@
 import { useEffect, useState, Dispatch, SetStateAction} from "react";
 
 import { BsMoonStarsFill } from 'react-icons/bs';
-import { FiSun } from 'react-icons/fi';
+import { CgSun } from 'react-icons/cg';
+import { Icon } from "../Icon";
 
 export const Theme = ({setTheme} : {setTheme: Dispatch<SetStateAction<"light" | "dark">>}) => {
 
@@ -24,13 +25,7 @@ export const Theme = ({setTheme} : {setTheme: Dispatch<SetStateAction<"light" | 
             className="p-2 rounded-full absolute right-[60px] pointer top-[calc(5vh_+_5px)] hover:bg-lightHover dark:hover:bg-darkHover"
             onClick={HandleToggleTheme}
         >
-            {
-                darkMode
-                ?
-                <FiSun size={28} className='text-neutral-900 dark:text-gray-50' />
-                :
-                <BsMoonStarsFill size={26} className='text-neutral-900 dark:text-gray-50' />
-            }
+            <Icon icon={darkMode ? CgSun : BsMoonStarsFill} size={26} />
         </div>
     )
 }
