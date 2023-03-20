@@ -1,6 +1,13 @@
-import Head from 'next/head'
+import { useState } from 'react';
+
+import Head from 'next/head';
+
+import { Header } from '@/Components/Header/Header';
 
 export default function Home() {
+
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+
   return (
     <>
       <Head>
@@ -10,8 +17,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section>
-
+      <section className={`${theme === 'dark' ? 'dark' : ''}`}>
+        <div className='min-h-[100vh] bg-grayMain dark:bg-darkMain'>
+          <Header pageTitle='Cadastro de chamados' setTheme={setTheme} />
+        </div>
       </section>
     </>
   )

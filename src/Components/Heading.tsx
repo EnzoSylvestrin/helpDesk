@@ -6,14 +6,15 @@ import clsx from 'clsx';
 
 type HeadingProps = {
     children: ReactNode,
+    asChild?: boolean,
     size?: 'sm' | 'md' | 'lg',
     className?: String,
     align?: 'left' | 'center' | 'right',
 }
 
-export const Heading = ({children, size = 'md', className, align = 'left', ...props} : HeadingProps) => {
+export const Heading = ({children, asChild, size = 'md', className, align = 'left', ...props} : HeadingProps) => {
 
-    const Comp = children != null ? 'h2' : Slot;
+    const Comp = !asChild ? 'h2' : Slot;
 
     return (
         <Comp
