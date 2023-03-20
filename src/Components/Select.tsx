@@ -107,7 +107,7 @@ const SelectItem = ({ children, value, className } : SelectItemProps) => {
         >
             <Select.ItemText>{children}</Select.ItemText>
             <Select.ItemIndicator className="absolute left-0 w-6 inline-flex items-center justify-center">
-                <Icon icon={BiCheck} size={20} colored/>
+                <Icon icon={BiCheck} size={20} colored />
             </Select.ItemIndicator>
         </Select.Item>
     );
