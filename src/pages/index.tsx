@@ -75,6 +75,9 @@ export default function Home() {
                     />
                   </Input.Root>
                 </label>
+                <label className='mt-5'>
+                  <Text className={'mb-2'}>Status:</Text>
+                </label>
               </div>
               <div className='flex-1 h-[85%] p-5 flex flex-col'>
               </div>

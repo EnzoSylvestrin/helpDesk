@@ -24,9 +24,9 @@ export const SelectComponent = ({ placeholder, items, id } : SelectProps) => (
                 <Icon icon={BiChevronDown} size={24} colored/>
             </Select.Icon>
         </Select.Trigger>
-        <Select.Portal className='bg-white dark:bg-slate-700'>
+        <Select.Portal className='bg-white dark:bg-slate-700 transition-all duration-500'>
             <Select.Content className="rounded-lg max-h-96 w-96 scroll-auto">
-                <Select.ScrollUpButton className="flex border-t rounded-t-lg border-t-black items-center justify-center h-5 py-4 cursor-pointer">
+                <Select.ScrollUpButton className="flex border-t rounded-t-lg border-b-slate-300 items-center justify-center h-5 py-4 cursor-pointer">
                     <Icon icon={BiChevronUp} size={24} colored/>
                 </Select.ScrollUpButton>
                 <Select.Viewport>
@@ -38,7 +38,7 @@ export const SelectComponent = ({ placeholder, items, id } : SelectProps) => (
                         }
                     </Select.Group>
                 </Select.Viewport>
-                <Select.ScrollDownButton className="flex border-t rounded-b-lg border-t-black items-center justify-center h-5 py-4 bg-white cursor-pointer">
+                <Select.ScrollDownButton className="flex border-t rounded-b-lg border-t-slate-300 items-center justify-center h-5 py-4 bg-white cursor-pointer">
                     <Icon icon={BiChevronDown} size={24} colored/>
                 </Select.ScrollDownButton>
             </Select.Content>
@@ -56,7 +56,11 @@ const SelectItem = ({ children, value, className } : SelectItemProps) => {
     return (
         <Select.Item
             className={clsx(
-                'text-sm text-darkColor bg-lightMain flex items-center h-5 pl-6 px-5 py-4 relative select-none data-[disabled]:text-gray-400 data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-lightHover data-[highlighted]:text-[var(--main)] dark:text-lightColor dark:bg-darkMain',
+                'text-sm text-darkColor bg-lightMain flex cursor-pointer items-center', 
+                'h-5 pl-6 px-5 py-4 relative select-none data-[disabled]:text-gray-400', 
+                'data-[disabled]:pointer-events-none data-[highlighted]:outline-none',
+                'data-[highlighted]:bg-lightHover data-[highlighted]:text-[var(--main)]',
+                'dark:text-lightColor dark:bg-darkMain',
                 className
             )}
             value={value}
@@ -66,5 +70,5 @@ const SelectItem = ({ children, value, className } : SelectItemProps) => {
                 <Icon icon={BiCheck} size={20} colored/>
             </Select.ItemIndicator>
         </Select.Item>
-  );
+    );
 };

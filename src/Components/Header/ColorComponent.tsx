@@ -34,12 +34,13 @@ export const ColorComponent = () => {
         if (InputColor.current == null) return; 
         const color = localStorage.getItem("color");
         InputColor.current.value = color || '#5f54ee';
+        document.body.style.setProperty('--main', color);
     }, [])
 
     return (
         <input 
             type="color" 
-            className="w-6 h-6 absolute top-[calc(5vh_+_10px)] left-[60px] border-0 rounded-full pointer"
+            className="w-6 h-6 absolute top-[calc(4vh_+_15px)] left-[60px] border-0 rounded-full pointer"
             onInput={HandleToggleColor}
             ref={InputColor}
         />
