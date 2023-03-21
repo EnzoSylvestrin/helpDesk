@@ -10,6 +10,7 @@ import { Header } from '@/Components/Header/Header';
 import { Timer } from '@/Components/Timer';
 import { Input } from '@/Components/Input';
 import { Text } from '@/Components/Text';
+import { RadioGroup } from '@/Components/RadioGroup';
 
 export default function Home() {
 
@@ -32,7 +33,7 @@ export default function Home() {
             <div className='h-[80vh] px-10 flex flex-wrap mt-3'>
               <div className='w-[45%] max-w-[450px] p-5 h-[85%] gap-5 flex flex-col'>
                 <label htmlFor='user'>
-                  <Text className={'mb-2'}>Funcionário:</Text>
+                  <Text className={'mb-2 !text-[19px]'}>Funcionário:</Text>
                   <Input.Root>
                     <Input.Icon icon={FaUserAlt} size={16} colored />
                     <Input.Select 
@@ -43,7 +44,7 @@ export default function Home() {
                   </Input.Root>
                 </label>
                 <label htmlFor='client'>
-                  <Text className={'mb-2'}>Cliente:</Text>
+                  <Text className={'mb-2 !text-[19px]'}>Cliente:</Text>
                   <Input.Root>
                     <Input.Icon icon={FaUserAlt} size={16} colored />
                     <Input.Select 
@@ -54,7 +55,7 @@ export default function Home() {
                   </Input.Root>
                 </label>
                 <label htmlFor='fantasy'>
-                  <Text className={'mb-2'}>Fantasia:</Text>
+                  <Text className={'mb-2 !text-[19px]'}>Fantasia:</Text>
                   <Input.Root>
                     <Input.Icon icon={FaGhost} size={16} colored />
                     <Input.Select 
@@ -65,7 +66,7 @@ export default function Home() {
                   </Input.Root>
                 </label>
                 <label htmlFor='type'>
-                  <Text className={'mb-2'}>Tipo:</Text>
+                  <Text className={'mb-2 !text-[19px]'}>Tipo:</Text>
                   <Input.Root>
                     <Input.Icon icon={FaHeadset} size={19} colored />
                     <Input.Select 
@@ -76,7 +77,14 @@ export default function Home() {
                   </Input.Root>
                 </label>
                 <label className='mt-5'>
-                  <Text className={'mb-2'}>Status:</Text>
+                  <Text className={'mb-2 !text-[19px]'}>Status:</Text>
+                  <RadioGroup
+                    className='mt-4'
+                    Radios={[
+                      {value: 'Pendente', color: 'text-yellow-500 after:bg-yellow-500 border-yellow-500'},
+                      {value: 'Concluído', color: 'text-green-500 after:bg-green-500 border-green-500'}
+                    ]}
+                  />
                 </label>
               </div>
               <div className='flex-1 h-[85%] p-5 flex flex-col'>
