@@ -9,6 +9,8 @@ import { HeadComponent } from "@/Components/HeadComponent";
 import { Header } from '@/Components/Header/Header';
 import { Text } from '@/Components/Text';
 import { Input } from '@/Components/Input';
+import { Heading } from '@/Components/Heading';
+import { Button } from '@/Components/Button';
 
 const Consulta = () => {
 
@@ -61,6 +63,13 @@ const Consulta = () => {
                                 <Input.Input id='func' type={'date'} />
                             </Input.Root>
                         </label>
+                    </div>
+                    <div className="flex flex-col text-sm">
+                        <Heading align='center'>Total de registros: <span className={'text-[var(--main)]'}>21</span></Heading>
+                        <div className="mt-5 flex items-center justify-center gap-[10px]">
+                            <Button text='Expandir' size="sm" />
+                            <Button text='Colapsar' size="sm" />
+                        </div>
                     </div>
                 </main>
             </section>
