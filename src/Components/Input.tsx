@@ -1,4 +1,6 @@
-import { InputHTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, InputHTMLAttributes, ReactNode } from 'react';
+
+import clsx from 'clsx';
 
 import { Icon, IconProps } from './Icon';
 import { SelectComponent, SelectProps } from './Select';
@@ -6,12 +8,18 @@ import { SelectComponent, SelectProps } from './Select';
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {}
 
 export type InputRootProps = {
+    className?: string,
     children: ReactNode;
 }
 
-const InputRoot = ({children} : InputRootProps) => {
+const InputRoot = ({className, children} : InputRootProps) => {
     return (
-        <div className='flex items-center cursor-text gap-[10px] px-3 h-12 rounded max-w-full bg-InputColorLight text-gray-50 text-xs placeholder:text-gray-100 dark:bg-InputColorDark focus-within:ring-2 ring-[var(--main)] shadow-[rgba(0,_0,_0,_0.19)_0px_10px_20px,_rgba(0,_0,_0,_0.23)_0px_6px_6px]'>
+        <div className={clsx(
+            'flex items-center cursor-text gap-[10px] px-3 h-12 rounded max-w-full bg-InputColorLight',
+            'text-gray-50 text-xs placeholder:text-gray-100 dark:bg-InputColorDark focus-within:ring-2',
+            'ring-[var(--main)] shadow-[rgba(0,_0,_0,_0.19)_0px_10px_20px,_rgba(0,_0,_0,_0.23)_0px_6px_6px]',
+            className
+        )}>
             {children}
         </div>
     );
@@ -27,7 +35,7 @@ const InputIcon = ({ ...props }: IconProps) => {
 
 InputIcon.displayName = 'Input.Icon'
 
-export type InputInputProps = InputHTMLAttributes<HTMLInputElement>;
+type InputInputProps = InputHTMLAttributes<HTMLInputElement>;
 
 const InputInput = ({ ...props } : InputInputProps) => {
     return (
@@ -47,9 +55,25 @@ const InputSelect = ({ ...props } : SelectProps) => {
 }
 
 
+type TextAreaProps = HTMLAttributes<HTMLTextAreaElement>;
+
+const InputTextArea = ({ className, ...props } : TextAreaProps) => {
+    return (
+        <textarea
+            className={clsx(
+                'resize-none bg-transparent flex-1 text-slate-800 text-sm outline-none pt-[10px]',
+                'placeholder:text-slate-700 dark:text-gray-50 dark:placeholder:text-gray-500',
+                className
+            )}
+            {...props}
+        />
+    )
+}
+
 export const Input = {
     Root: InputRoot,
     Icon: InputIcon,
     Input: InputInput,
-    Select: InputSelect
+    Select: InputSelect,
+    TextArea: InputTextArea
 }

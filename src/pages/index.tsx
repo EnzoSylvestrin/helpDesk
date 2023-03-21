@@ -11,6 +11,7 @@ import { Timer } from '@/Components/Timer';
 import { Input } from '@/Components/Input';
 import { Text } from '@/Components/Text';
 import { RadioGroup } from '@/Components/RadioGroup';
+import { Button } from '@/Components/Button';
 
 export default function Home() {
 
@@ -88,7 +89,17 @@ export default function Home() {
                 </label>
               </div>
               <div className='flex-1 h-[85%] p-5 flex flex-col'>
+                <label htmlFor='description' className='h-[90%]'>
+                  <Text className={'mb-2 !text-[19px]'}>Mensagem:</Text>
+                  <Input.Root className='!h-full'>
+                    <Input.TextArea className='h-full' placeholder='Descreva o que ocorreu durante o chamado..'/>
+                  </Input.Root>
+                </label>
               </div>
+              <footer className='w-full px-5 h-[8vh] flex items-center justify-between'>
+                <Button size='lg' text='Consulta' />
+                <Button size='lg' text='Registrar' />
+              </footer>
             </div>
           </form>
         </main>
