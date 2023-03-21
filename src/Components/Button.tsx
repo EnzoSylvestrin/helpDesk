@@ -19,12 +19,12 @@ export const Button = ({ size = 'md', type = "button", text, href, loading = fal
     <Button
       type={type}
       className={clsx(
-        "rounded-md bg-[var(--main)] text-white ring-[var(--main)] ring-2 transition-all duration-[400ms]",
-        "px-1 py-[2px] cursor-pointer selection:text-inherit",
+        "rounded-md bg-[var(--main)] leading-none text-white ring-[var(--main)] ring-2 transition-all duration-[400ms]",
+        "cursor-pointer selection:text-inherit",
         'hover:shadow-[0_0_5px_var(--main),_0_0_10px_var(--main),_0_0_20px_var(--main)] hover:scale-[1.03]', {
-        'text-sm': size === 'sm',
-        'text-md': size === 'md',
-        'text-lg': size === 'lg',
+        'text-sm px-1 py-[6px]': size === 'sm',
+        'text-md px-[6px] py-2': size === 'md',
+        'text-lg p-2': size === 'lg',
         'w-full': full,
         '!text-transparent relative bg-transparent': loading
       })}

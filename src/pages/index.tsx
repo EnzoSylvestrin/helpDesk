@@ -36,7 +36,7 @@ export default function Home() {
                 <label htmlFor='user'>
                   <Text className={'mb-2 !text-[19px]'}>Funcionário:</Text>
                   <Input.Root>
-                    <Input.Icon icon={FaUserAlt} size={16} colored />
+                    <Input.Icon icon={FaUserAlt} size={18} colored />
                     <Input.Select 
                       placeholder='Selecione o funcionário...' 
                       items={OptionsFunc} 
@@ -47,7 +47,7 @@ export default function Home() {
                 <label htmlFor='client'>
                   <Text className={'mb-2 !text-[19px]'}>Cliente:</Text>
                   <Input.Root>
-                    <Input.Icon icon={FaUserAlt} size={16} colored />
+                    <Input.Icon icon={FaUserAlt} size={18} colored />
                     <Input.Select 
                       placeholder='Selecione o cliente...' 
                       items={OptionsFunc} 
@@ -58,7 +58,7 @@ export default function Home() {
                 <label htmlFor='fantasy'>
                   <Text className={'mb-2 !text-[19px]'}>Fantasia:</Text>
                   <Input.Root>
-                    <Input.Icon icon={FaGhost} size={16} colored />
+                    <Input.Icon icon={FaGhost} size={18} colored />
                     <Input.Select 
                       placeholder='Selecione a fantasia...' 
                       items={OptionsFunc} 
