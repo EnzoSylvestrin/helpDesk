@@ -11,8 +11,8 @@ type HeaderProps = {
 
 export const Header = ({pageTitle, setTheme} : HeaderProps) => {
     return (
-        <header className="max-h-[10vh]">
-            <Heading size="lg" align="center" asChild={true} className="pt-[4vh]">
+        <header className="h-auto flex items-center justify-center flex-wrap sm:inline sm:h-[10vh]">
+            <Heading size="lg" align="center" asChild={true} className="w-full pt-[4vh] sm:w-auto">
                 <h1>{pageTitle}</h1>
             </Heading>
             <ColorComponent />

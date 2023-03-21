@@ -31,8 +31,8 @@ export default function Home() {
           <Header pageTitle='Cadastro de chamados' setTheme={setTheme} />
           <form className=''>
             <Timer />
-            <div className='h-[80vh] px-10 flex flex-wrap mt-3'>
-              <div className='w-[45%] max-w-[450px] p-5 h-[85%] gap-5 flex flex-col'>
+            <div className='h-auto py-[10px] px-[5px] flex flex-col flex-wrap mt-3 md:px-10 sm:flex-row sm:h-[80vh]'>
+              <div className='w-full max-w-full px-2 py-[10px] xs:px-5 xs:py-[10px] sm:w-[45%] sm:max-w-[450px] p-5 h-[85%] gap-5 flex flex-col'>
                 <label htmlFor='user'>
                   <Text className={'mb-2 !text-[19px]'}>Funcionário:</Text>
                   <Input.Root>
@@ -88,7 +88,7 @@ export default function Home() {
                   />
                 </label>
               </div>
-              <div className='flex-1 h-[85%] p-5 flex flex-col'>
+              <div className='px-2 h-[350px] xs:px-5 xs:w-full xs:flex-none sm:flex-1 sm:py-[10px] sm:h-[85%] p-5 flex flex-col'>
                 <label htmlFor='description' className='h-[90%]'>
                   <Text className={'mb-2 !text-[19px]'}>Mensagem:</Text>
                   <Input.Root className='!h-full'>
@@ -96,7 +96,7 @@ export default function Home() {
                   </Input.Root>
                 </label>
               </div>
-              <footer className='w-full px-5 h-[8vh] flex items-center justify-between'>
+              <footer className='w-full px-2 xs:px-5 h-[8vh] flex items-center justify-between'>
                 <Button size='lg' text='Consulta' />
                 <Button size='lg' text='Registrar' />
               </footer>

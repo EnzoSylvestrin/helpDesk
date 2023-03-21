@@ -40,7 +40,7 @@ export const ColorComponent = () => {
     return (
         <input 
             type="color" 
-            className="w-6 h-6 absolute top-[calc(4vh_+_15px)] left-[60px] border-0 rounded-full pointer"
+            className="w-6 h-6 top-[calc(4vh_+_15px)] left-[30px] border-0 rounded-full pointer mx-[10px] static sm:m-0 sm:absolute md:left-[60px]"
             onInput={HandleToggleColor}
             ref={InputColor}
         />

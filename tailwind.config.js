@@ -14,6 +14,9 @@ module.exports = {
         lightColor: 'rgb(249 250 251)',
         InputColorDark: '#302f2f',
         InputColorLight: '#e6e6e6',
+      },
+      screens: {
+        xs: '450px',
       }
     },
     fontSize: {
@@ -26,6 +29,7 @@ module.exports = {
       '2xl': '2rem',
       xlg: '2.5rem',
     },
+    
   },
   darkMode: 'class',
   plugins: [],

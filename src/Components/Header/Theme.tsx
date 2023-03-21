@@ -22,7 +22,7 @@ export const Theme = ({setTheme} : {setTheme: Dispatch<SetStateAction<"light" | 
 
     return (
         <div 
-            className="p-2 rounded-full absolute right-[60px] pointer top-[calc(4vh_+_5px)] hover:bg-lightHover dark:hover:bg-darkHover"
+            className="p-2 rounded-full static mx-5 my-[10px] block right-[30px] pointer top-[calc(4vh_+_5px)] hover:bg-lightHover dark:hover:bg-darkHover sm:m-0 sm:absolute sm:right-[60px]"
             onClick={HandleToggleTheme}
         >
             <Icon icon={darkMode ? CgSun : BsMoonStarsFill} size={26} />
