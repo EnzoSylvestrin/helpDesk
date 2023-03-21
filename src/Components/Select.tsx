@@ -23,7 +23,6 @@ export const SelectComponent = ({ placeholder, items, id }: SelectProps) => {
 
     const handleSelectClose = () => {
         setIsOpen(false);
-        console.log('fechou')
     };
 
     useIsomorphicLayoutEffect(() => {

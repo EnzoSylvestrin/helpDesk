@@ -18,6 +18,7 @@ const InputRoot = ({className, children} : InputRootProps) => {
             'flex items-center cursor-text gap-[10px] px-3 h-12 rounded max-w-full bg-InputColorLight',
             'text-gray-50 text-xs placeholder:text-gray-100 dark:bg-InputColorDark focus-within:ring-2',
             'ring-[var(--main)] shadow-[rgba(0,_0,_0,_0.19)_0px_10px_20px,_rgba(0,_0,_0,_0.23)_0px_6px_6px]',
+            'transition-colors duration-300',
             className
         )}>
             {children}

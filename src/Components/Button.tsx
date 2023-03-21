@@ -19,7 +19,7 @@ export const Button = ({ size = 'md', type = "button", text, href, loading = fal
     <Button
       type={type}
       className={clsx(
-        "rounded-md bg-[var(--main)] leading-none text-white ring-[var(--main)] ring-2 transition-all duration-[400ms]",
+        "rounded-md bg-[var(--main)] leading-none text-white border-[var(--main)] border-2 transition-all duration-[400ms]",
         "cursor-pointer selection:text-inherit",
         'hover:shadow-[0_0_5px_var(--main),_0_0_10px_var(--main),_0_0_20px_var(--main)] hover:scale-[1.03]', {
         'text-sm px-1 py-[6px]': size === 'sm',

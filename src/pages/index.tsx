@@ -27,7 +27,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className={`${theme === 'dark' ? 'dark' : ''}`}>
-        <main className='min-h-[100vh] bg-grayMain dark:bg-darkMain'>
+        <main className='min-h-[100vh] transition-colors duration-300 bg-grayMain dark:bg-darkMain'>
           <Header pageTitle='Cadastro de chamados' setTheme={setTheme} />
           <form className=''>
             <Timer />
