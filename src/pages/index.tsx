@@ -2,8 +2,6 @@ import { useState } from 'react';
 
 import { FaUserAlt, FaHeadset, FaGhost } from 'react-icons/fa';
 
-import Head from 'next/head';
-
 import { OptionsFunc, OptionsType } from '@/Utils/Options';
 
 import { Header } from '@/Components/Header/Header';
@@ -12,6 +10,7 @@ import { Input } from '@/Components/Input';
 import { Text } from '@/Components/Text';
 import { RadioGroup } from '@/Components/RadioGroup';
 import { Button } from '@/Components/Button';
+import { HeadComponent } from '@/Components/HeadComponent';
 
 export default function Home() {
 
@@ -19,13 +18,7 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <title>Cadastro de chamados</title>
-        <meta name="description" content="Site para registro de chamados para funcionamento" />
-        <meta name="author" content='Enzo Sylvestrin - enzospavani@gmail.com' />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <HeadComponent title='Cadastro de chamados' />
       <section className={`${theme === 'dark' ? 'dark' : ''}`}>
         <main className='min-h-[100vh] transition-colors duration-300 bg-grayMain dark:bg-darkMain'>
           <Header pageTitle='Cadastro de chamados' setTheme={setTheme} />
@@ -97,7 +90,7 @@ export default function Home() {
                 </label>
               </div>
               <footer className='w-full px-2 xs:px-5 h-[8vh] flex items-center justify-between'>
-                <Button size='lg' text='Consulta' />
+                <Button size='lg' href='/Consulta' text='Consulta' />
                 <Button size='lg' text='Registrar' />
               </footer>
             </div>
