@@ -15,8 +15,8 @@ export const Description = () => {
     const instruction = "Corrija este texto";
 
     const configuration = new Configuration({
-        organization: process.env.NEXT_PUBLIC_ORG_ID,
-        apiKey: process.env.NEXT_PUBLIC_API_KEY,
+        organization: process.env.ORG_ID,
+        apiKey: process.env.API_KEY,
     });
     const openai = new OpenAIApi(configuration);
 
