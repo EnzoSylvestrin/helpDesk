@@ -32,7 +32,7 @@ export const SelectComponent = ({ placeholder, items, id }: SelectProps) => {
     }, []);
 
     return (
-        <Select.Root>
+        <Select.Root required>
             <Select.Trigger
                 className="flex items-center justify-between text-sm h-full w-full bg-transparent text-darkColor dark:text-lightColor outline-none"
                 aria-label={placeholder}

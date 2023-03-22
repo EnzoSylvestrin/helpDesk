@@ -33,7 +33,7 @@ export default function Home() {
                     <Input.Icon icon={FaUserAlt} size={18} colored />
                     <Input.Select 
                       placeholder='Selecione o funcionário...' 
-                      items={OptionsFunc} 
+                      items={OptionsFunc}
                       id={'user'}
                     />
                   </Input.Root>
