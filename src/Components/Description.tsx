@@ -1,4 +1,4 @@
-import { FormEvent, useEffect } from "react";
+import { FormEvent } from "react";
 
 import { Configuration, OpenAIApi } from "openai";
 
@@ -13,6 +13,12 @@ export const Description = () => {
 
     const modelEdit = 'text-davinci-edit-001';
     const instruction = "Corrija este texto";
+
+    const configuration = new Configuration({
+        organization: process.env.NEXT_PUBLIC_ORG_ID,
+        apiKey: process.env.NEXT_PUBLIC_API_KEY,
+    });
+    const openai = new OpenAIApi(configuration);
 
     const HandleInput = (e: FormEvent<HTMLTextAreaElement>) => {
         const description = e.currentTarget;
@@ -39,18 +45,7 @@ export const Description = () => {
         }
     }
 
-    const CompleteText = async (prompt: string, description: HTMLTextAreaElement) => {
-
-        const openAiResponse = await GetOpenAIInstance();
-        
-        const data : any = openAiResponse.body;
-
-        const configuration = new Configuration({
-            organization: data.orgId,
-            apiKey: data.key,
-        });
-        const openai = new OpenAIApi(configuration);
-
+    const CompleteText = (prompt: string, description: HTMLTextAreaElement) => {
         openai.createCompletion({
             model,
             prompt,
@@ -80,18 +75,7 @@ export const Description = () => {
         });       
     }
 
-    const CorrectText = async (input: string, description: HTMLTextAreaElement) => {
-
-        const openAiResponse = await GetOpenAIInstance();
-        
-        const data : any = openAiResponse.body;
-
-        const configuration = new Configuration({
-            organization: data.orgId,
-            apiKey: data.key,
-        });
-        const openai = new OpenAIApi(configuration);
-
+    const CorrectText =  (input: string, description: HTMLTextAreaElement) => {
         openai.createEdit({
             model: modelEdit,
             input,
@@ -110,10 +94,6 @@ export const Description = () => {
         }).finally(() => {
             description.disabled = false;
         });
-    }
-
-    const GetOpenAIInstance = async () => {
-        return fetch('/api/GetKeys');
     }
 
     return (
