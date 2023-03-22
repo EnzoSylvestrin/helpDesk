@@ -20,8 +20,6 @@ export const Description = () => {
     });
     const openai = new OpenAIApi(configuration);
 
-    console.log(process.env.OPENAI_API_KEY);
-
     const HandleInput = (e: FormEvent<HTMLTextAreaElement>) => {
         const description = e.currentTarget;
         const text = description.value;
