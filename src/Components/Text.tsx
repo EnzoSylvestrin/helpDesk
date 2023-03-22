@@ -18,7 +18,7 @@ export const Text = ({children, size = 'md', className, align = 'left', ...props
     return (
         <Comp
             className={clsx(
-                'text-neutral-900 dark:text-gray-50',
+                'leading-none text-neutral-900 dark:text-gray-50',
                 {
                     'text-sm': size === 'sm',
                     'text-md': size === 'md',

@@ -14,6 +14,8 @@ module.exports = {
         lightColor: 'rgb(249 250 251)',
         InputColorDark: '#302f2f',
         InputColorLight: '#e6e6e6',
+        CardDarkColor: '#242424',
+        CardLightColor: '#a5a7a8'
       },
       screens: {
         xs: '450px',
