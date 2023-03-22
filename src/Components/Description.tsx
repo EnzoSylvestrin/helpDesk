@@ -1,8 +1,6 @@
-import { FormEvent } from "react";
+import { FormEvent, useEffect } from "react";
 
 import { Configuration, OpenAIApi } from "openai";
-
-import { API_KEY, ORG_ID } from "@/pages/Api/GetKeys";
 
 import { Input } from "./Input";
 import { Text } from "./Text";
@@ -15,12 +13,6 @@ export const Description = () => {
 
     const modelEdit = 'text-davinci-edit-001';
     const instruction = "Corrija este texto";
-
-    const configuration = new Configuration({
-        organization: ORG_ID,
-        apiKey: API_KEY,
-    });
-    const openai = new OpenAIApi(configuration);
 
     const HandleInput = (e: FormEvent<HTMLTextAreaElement>) => {
         const description = e.currentTarget;
@@ -47,7 +39,18 @@ export const Description = () => {
         }
     }
 
-    const CompleteText = (prompt: string, description: HTMLTextAreaElement) => {
+    const CompleteText = async (prompt: string, description: HTMLTextAreaElement) => {
+
+        const openAiResponse = await GetOpenAIInstance();
+        
+        const data : any = openAiResponse.body;
+
+        const configuration = new Configuration({
+            organization: data.orgId,
+            apiKey: data.key,
+        });
+        const openai = new OpenAIApi(configuration);
+
         openai.createCompletion({
             model,
             prompt,
@@ -77,7 +80,18 @@ export const Description = () => {
         });       
     }
 
-    const CorrectText =  (input: string, description: HTMLTextAreaElement) => {
+    const CorrectText = async (input: string, description: HTMLTextAreaElement) => {
+
+        const openAiResponse = await GetOpenAIInstance();
+        
+        const data : any = openAiResponse.body;
+
+        const configuration = new Configuration({
+            organization: data.orgId,
+            apiKey: data.key,
+        });
+        const openai = new OpenAIApi(configuration);
+
         openai.createEdit({
             model: modelEdit,
             input,
@@ -96,6 +110,10 @@ export const Description = () => {
         }).finally(() => {
             description.disabled = false;
         });
+    }
+
+    const GetOpenAIInstance = async () => {
+        return fetch('/api/GetKeys');
     }
 
     return (
