@@ -52,42 +52,42 @@ const Consulta = () => {
             <section className={`${theme === 'dark' ? 'dark' : ''}`}>
                 <main className='min-h-[100vh] transition-colors duration-300 bg-grayMain dark:bg-darkMain'>
                     <Header pageTitle='Consulta de chamados' setTheme={setTheme} back={true} />
-                    <div className='px-10 py-5 flex flex-wrap items-center justify-around'>
-                        <label htmlFor='func' className='w-[30%] mt-5'>
+                    <div className='p-5 flex flex-wrap flex-col items-center justify-center xs:px-10 xs:py-5 md:flex-row md:justify-around'>
+                        <label htmlFor='func' className='w-full mt-5 md:w-[30%]'>
                             <Text className={'mb-2 !text-[19px]'}>Funcionário:</Text>
                             <Input.Root>
                                 <Input.Icon icon={FaUserAlt} size={18} colored/>
                                 <Input.Select id='func' placeholder='Todos' items={OptionsFunc} />
                             </Input.Root>
                         </label>
-                        <label htmlFor='type' className='w-[30%] mt-5'>
+                        <label htmlFor='type' className='w-full mt-5 md:w-[30%]'>
                             <Text className={'mb-2 !text-[19px]'}>Tipo:</Text>
                             <Input.Root>
                                 <Input.Icon icon={FaHeadset} size={18} colored/>
                                 <Input.Select id='type' placeholder='Todos' items={OptionsFunc} />
                             </Input.Root>
                         </label>
-                        <label htmlFor='status' className='w-[30%] mt-5'>
+                        <label htmlFor='status' className='w-full mt-5 md:w-[30%]'>
                             <Text className={'mb-2 !text-[19px]'}>Status:</Text>
                             <Input.Root>
                                 <Input.Icon icon={TfiMenuAlt} size={18} colored/>
                                 <Input.Select id='status' placeholder='Todos' items={OptionsFunc} />
                             </Input.Root>
                         </label>
-                        <label htmlFor='fantasy' className='w-[30%] mt-5'>
+                        <label htmlFor='fantasy' className='w-full mt-5 md:w-[30%]'>
                             <Text className={'mb-2 !text-[19px]'}>Fantasia:</Text>
                             <Input.Root>
                                 <Input.Icon icon={FaGhost} size={18} colored/>
                                 <Input.Select id='fantasy' placeholder='Todos' items={OptionsFunc} />
                             </Input.Root>
                         </label>
-                        <label htmlFor='initial' className='w-[30%] mt-5'>
+                        <label htmlFor='initial' className='w-full mt-5 md:w-[30%]'>
                             <Text className={'mb-2 !text-[19px]'}>Data inicial:</Text>
                             <Input.Root>
                                 <Input.Input id='initial' type={'date'} />
                             </Input.Root>
                         </label>
-                        <label htmlFor='final' className='w-[30%] mt-5'>
+                        <label htmlFor='final' className='w-full mt-5 md:w-[30%]'>
                             <Text className={'mb-2 !text-[19px]'}>Data Final:</Text>
                             <Input.Root>
                                 <Input.Input id='func' type={'date'} />
@@ -101,7 +101,7 @@ const Consulta = () => {
                             <Button text='Colapsar' size="sm" />
                         </div>
                     </div>
-                    <div className='w-full h-auto flex items-center flex-col py-5 px-[60px] justify-center'>
+                    <div className='w-full h-auto flex items-center flex-col py-5 px-[15px] justify-center md:px-[60px]'>
                         <div 
                             className='w-full h-full px-5 py-[10px] pl-[30px] rounded-[10px] flex flex-col my-3 relative cursor-pointer shadow-[rgba(0,_0,_0,_0.1)_0px_10px_15px_-3px,_rgba(0,_0,_0,_0.05)_0px_4px_6px_-2px] bg-InputColorLight dark:bg-InputColorDark'
                             onClick={(e) => HandleCardClick(e)}
