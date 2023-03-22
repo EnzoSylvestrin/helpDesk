@@ -2,16 +2,13 @@ import { FormEvent } from "react";
 
 import { Configuration, OpenAIApi } from "openai";
 
+import { API_KEY, ORG_ID } from "@/pages/Api/GetKeys";
+
 import { Input } from "./Input";
 import { Text } from "./Text";
 
 export const Description = () => {
-
-    const ORG_ID = process.env.OPENAI_ORG_ID;
-    const API_KEY = process.env.OPENAI_API_KEY;
-
-    console.log(process.env);
-
+    
     const model = 'text-davinci-003';
     const maxTokens = 300;
     const temperature = 0.2;
