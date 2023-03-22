@@ -1,5 +1,5 @@
-import React from 'react';
 import * as RadioGroupRadix from '@radix-ui/react-radio-group';
+
 import clsx from 'clsx';
 
 type RadioGroupProps = {
@@ -15,6 +15,7 @@ export const RadioGroup = ({ className, Radios } : RadioGroupProps) => {
         <RadioGroupRadix.Root
             className={clsx("flex flex-col gap-2.5 ml-1", className)}
             aria-label="Status do chamado"
+            defaultValue='Concluído'
             required
         >
             <div className="flex flex-col gap-3">

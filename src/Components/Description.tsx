@@ -7,6 +7,11 @@ import { Text } from "./Text";
 
 export const Description = () => {
 
+    const ORG_ID = process.env.OPENAI_ORG_ID;
+    const API_KEY = process.env.OPENAI_API_KEY;
+
+    console.log(ORG_ID, API_KEY);
+
     const model = 'text-davinci-003';
     const maxTokens = 300;
     const temperature = 0.2;
@@ -15,8 +20,8 @@ export const Description = () => {
     const instruction = "Corrija este texto";
 
     const configuration = new Configuration({
-        organization: process.env.OPENAI_ORG_ID,
-        apiKey: process.env.OPENAI_API_KEY,
+        organization: ORG_ID,
+        apiKey: API_KEY,
     });
     const openai = new OpenAIApi(configuration);
 
