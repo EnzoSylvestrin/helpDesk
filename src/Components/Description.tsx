@@ -10,7 +10,7 @@ export const Description = () => {
     const ORG_ID = process.env.OPENAI_ORG_ID;
     const API_KEY = process.env.OPENAI_API_KEY;
 
-    console.log(ORG_ID, API_KEY);
+    console.log(process.env);
 
     const model = 'text-davinci-003';
     const maxTokens = 300;
