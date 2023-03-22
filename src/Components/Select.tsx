@@ -102,11 +102,11 @@ const SelectItem = ({ children, value, className } : SelectItemProps) => {
     return (
         <Select.Item
             className={clsx(
-                'text-sm text-darkColor bg-grayMain flex cursor-pointer items-center', 
+                'text-sm text-darkColor bg-InputColorLight flex cursor-pointer items-center', 
                 'h-5 pl-6 px-5 py-4 relative select-none data-[disabled]:text-gray-400', 
                 'data-[disabled]:pointer-events-none data-[highlighted]:outline-none',
                 'data-[highlighted]:bg-lightHover data-[highlighted]:text-[var(--main)]',
-                'dark:text-lightColor dark:bg-darkMain dark:data-[highlighted]:bg-darkHover ',
+                'dark:text-lightColor dark:bg-InputColorDark dark:data-[highlighted]:bg-darkHover ',
                 className
             )}
             value={value}
