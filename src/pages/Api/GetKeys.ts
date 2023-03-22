@@ -1,7 +1,7 @@
 const API_KEY = process.env.OPENAI_API_KEY;
 const ORG_ID = process.env.OPENAI_ORG_ID;
 
-export type KeysObjProps = {
+type KeysObjProps = {
     key: string | undefined,
     orgId: string | undefined,
 }
