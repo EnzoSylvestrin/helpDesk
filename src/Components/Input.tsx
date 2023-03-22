@@ -66,6 +66,7 @@ const InputTextArea = ({ className, ...props } : TextAreaProps) => {
                 'placeholder:text-slate-700 dark:text-gray-50 dark:placeholder:text-gray-500',
                 className
             )}
+            required
             {...props}
         />
     )

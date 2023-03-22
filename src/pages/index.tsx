@@ -87,7 +87,7 @@ export default function Home() {
               </div>
               <footer className='w-full px-2 xs:px-5 h-[8vh] flex items-center justify-between'>
                 <Button size='lg' href='/Consulta' text='Consulta' />
-                <Button size='lg' text='Registrar' />
+                <Button size='lg' type='submit' text='Registrar' />
               </footer>
             </div>
           </form>
