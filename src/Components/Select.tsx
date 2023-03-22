@@ -43,18 +43,19 @@ export const SelectComponent = ({ placeholder, items, id }: SelectProps) => {
                 </Select.Icon>
             </Select.Trigger>
             <motion.div
+                className='z-[1032]'
                 animate={{ 
                     opacity: show ? isOpen ? 1 : 0 : 0,
                 }}
                 transition={{ duration: 0.4 }}
                 style={{ 
                     visibility: show ? 'visible' : 'hidden',
-                    position: 'absolute'
+                    position: 'relative'
                 }} // Hide the content during server-side rendering
             >
                 <Select.Content
                     onCloseAutoFocus={handleSelectClose}
-                    className="max-h-96 w-96 scroll-auto"
+                    className="max-h-96 w-96 scroll-auto z-[1032]"
                 >
                     <Select.ScrollUpButton className="flex border-t rounded-t-lg border-b-slate-300 items-center justify-center h-5 py-4 cursor-pointer">
                         <Icon icon={BiChevronUp} size={24} colored />
