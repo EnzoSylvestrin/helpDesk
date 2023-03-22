@@ -1,9 +1,11 @@
 import React, { ReactNode, useState } from 'react';
 import { motion, useIsomorphicLayoutEffect } from 'framer-motion';
+
 import * as Select from '@radix-ui/react-select';
 
-import { BiCheck, BiChevronDown, BiChevronUp } from 'react-icons/bi';
 import clsx from 'clsx';
+import { BiCheck, BiChevronDown, BiChevronUp } from 'react-icons/bi';
+
 import { Icon } from './Icon';
 import { FormatText } from '@/Utils/Commom';
 
@@ -44,7 +46,7 @@ export const SelectComponent = ({ placeholder, items, id }: SelectProps) => {
             </Select.Trigger>
             <motion.div
                 className='z-[1032]'
-                animate={{ 
+                animate={{
                     opacity: show ? isOpen ? 1 : 0 : 0,
                 }}
                 transition={{ duration: 0.4 }}

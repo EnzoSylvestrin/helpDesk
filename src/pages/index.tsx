@@ -11,6 +11,7 @@ import { Text } from '@/Components/Text';
 import { RadioGroup } from '@/Components/RadioGroup';
 import { Button } from '@/Components/Button';
 import { HeadComponent } from '@/Components/HeadComponent';
+import { Description } from '@/Components/Description';
 
 export default function Home() {
 
@@ -82,12 +83,7 @@ export default function Home() {
                 </label>
               </div>
               <div className='px-2 h-[350px] xs:px-5 xs:w-full xs:flex-none sm:flex-1 sm:py-[10px] sm:h-[85%] p-5 flex flex-col'>
-                <label htmlFor='description' className='h-[90%]'>
-                  <Text className={'mb-2 !text-[19px]'}>Mensagem:</Text>
-                  <Input.Root className='!h-full'>
-                    <Input.TextArea className='h-full' placeholder='Descreva o que ocorreu durante o chamado..'/>
-                  </Input.Root>
-                </label>
+                <Description />
               </div>
               <footer className='w-full px-2 xs:px-5 h-[8vh] flex items-center justify-between'>
                 <Button size='lg' href='/Consulta' text='Consulta' />
