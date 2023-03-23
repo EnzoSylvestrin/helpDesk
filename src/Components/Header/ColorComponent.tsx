@@ -1,6 +1,5 @@
 import { useEffect, useRef, Dispatch, SetStateAction } from "react";
-
-import { Tooltip } from "react-tooltip";
+import Tooltip from "../Tooltip";
 
 export const ColorComponent = ({setTheme} : {setTheme: Dispatch<SetStateAction<"light" | "dark">>}) => {
 
@@ -46,16 +45,19 @@ export const ColorComponent = ({setTheme} : {setTheme: Dispatch<SetStateAction<"
 
     return (
         <>
-            <input 
-                type="color" 
-                className="w-6 h-6 top-[calc(4vh_+_15px)] cursor-pointer left-[30px] border-0 rounded-full pointer mx-[10px] static sm:m-0 sm:absolute md:left-[60px]"
-                onInput={HandleToggleColor}
-                ref={InputColor}
-                data-tooltip-id="TipColor"
-                data-tooltip-place="left"
-                data-tooltip-content="Altere a cor principal do site!"
+            <Tooltip 
+                element={
+                    <input 
+                        type="color" 
+                        className="w-6 h-6 top-[calc(4vh_+_15px)] cursor-pointer left-[30px] border-0 rounded-full pointer mx-[10px] static sm:m-0 sm:absolute md:left-[60px]"
+                        onInput={HandleToggleColor}
+                        ref={InputColor}
+                    />
+                }
+                place="top"
+                text="Altere a cor principal do site!"
             />
-            <Tooltip id="TipColor" openOnClick={false}/>
+            
         </>
     );
 }
