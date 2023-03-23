@@ -54,7 +54,7 @@ export const ColorComponent = ({setTheme} : {setTheme: Dispatch<SetStateAction<"
                         ref={InputColor}
                     />
                 }
-                place="top"
+                place="right"
                 text="Altere a cor principal do site!"
             />
             
