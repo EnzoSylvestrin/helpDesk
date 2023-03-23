@@ -1,4 +1,5 @@
 import React from 'react';
+// @ts-ignore
 import * as TooltipRadix from '@radix-ui/react-Tooltip';
 
 type TooltipProps = {
