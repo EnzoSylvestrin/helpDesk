@@ -1,4 +1,4 @@
-import * as TooltipRadix from '@radix-ui/react-Tooltip';
+import * as TooltipRadix from '@radix-ui/react-tooltip';
 
 type TooltipProps = {
   element: JSX.Element,
