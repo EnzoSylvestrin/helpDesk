@@ -97,7 +97,7 @@ export const Description = () => {
     }
 
     return (
-        <label htmlFor='description' className='h-[90%]'>
+        <label htmlFor='description' className='h-full'>
             <Text className={'mb-2 !text-[19px]'}>Mensagem:</Text>
             <Input.Root className='!h-full'>
                 <Input.TextArea

@@ -23,9 +23,9 @@ export default function Home() {
       <section className={`${theme === 'dark' ? 'dark' : ''}`}>
         <main className='min-h-[100vh] transition-colors duration-300 bg-grayMain dark:bg-darkMain'>
           <Header pageTitle='Cadastro de chamados' setTheme={setTheme} />
-          <form className=''>
+          <form className='min-h-[90vh] flex flex-col justify-start'>
             <Timer />
-            <div className='h-auto py-[10px] px-[5px] flex flex-col flex-wrap mt-3 md:px-10 sm:flex-row sm:h-[80vh]'>
+            <div className='h-full py-[10px] px-[5px] items-stretch flex flex-col flex-wrap pt-3 md:px-10 sm:flex-row'>
               <div className='w-full max-w-full px-2 py-[10px] xs:px-5 xs:py-[10px] sm:w-[45%] sm:max-w-[450px] p-5 h-[85%] gap-5 flex flex-col'>
                 <label htmlFor='user'>
                   <Text className={'mb-2 !text-[19px]'}>Funcionário:</Text>
@@ -82,14 +82,14 @@ export default function Home() {
                   />
                 </label>
               </div>
-              <div className='px-2 h-[350px] xs:px-5 xs:w-full xs:flex-none sm:flex-1 sm:py-[10px] sm:h-[85%] p-5 flex flex-col'>
+              <div className='px-2 h-[350px] xs:px-5 xs:w-full xs:flex-none sm:flex-1 sm:py-[10px] md:h-auto p-5 flex flex-col'>
                 <Description />
               </div>
-              <footer className='w-full px-2 xs:px-5 h-[8vh] flex items-center justify-between'>
-                <Button size='lg' href='/Consulta' text='Consulta' />
-                <Button size='lg' type='submit' text='Registrar' />
-              </footer>
             </div>
+            <footer className='w-full pt-10 px-[13px] grow-1 xs:px-[25px] md:px-[60px] flex flex-1  items-center justify-between'>
+              <Button size='lg' href='/Consulta' text='Consulta' />
+              <Button size='lg' type='submit' text='Registrar' />
+            </footer>
           </form>
         </main>
       </section>

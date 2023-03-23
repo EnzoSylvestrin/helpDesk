@@ -13,7 +13,7 @@ type HeaderProps = {
 
 export const Header = ({ pageTitle, setTheme, back = false } : HeaderProps) => {
     return (
-        <header className="h-auto flex items-center justify-center flex-wrap sm:inline sm:h-[10vh]">
+        <header className="h-auto flex items-center justify-center flex-wrap sm:block sm:h-[10vh]">
             {back ? <Back url="/"/> : ''}
             <Heading size="lg" align="center" asChild={true} className="w-full pt-[4vh] sm:w-auto">
                 <h1>{pageTitle}</h1>

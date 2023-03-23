@@ -56,7 +56,7 @@ export const Timer = () => {
     };
   
     return (
-        <div className="mt-4 flex-1 flex flex-col items-center h-full">
+        <div className="pt-4 flex flex-col items-center h-full">
             <div className="flex items-center gap-1 mb-2">
                 <Icon icon={BsClockFill} size={18} colored />
                 <Text size="lg" className="w-[85px]">
