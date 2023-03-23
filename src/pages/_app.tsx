@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import '@/styles/globals.css';
 
+import 'react-tooltip/dist/react-tooltip.css';
+
 import type { AppProps } from 'next/app';
 
 import { useRouter } from 'next/router';

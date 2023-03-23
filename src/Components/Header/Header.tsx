@@ -18,7 +18,7 @@ export const Header = ({ pageTitle, setTheme, back = false } : HeaderProps) => {
             <Heading size="lg" align="center" asChild={true} className="w-full pt-[4vh] sm:w-auto">
                 <h1>{pageTitle}</h1>
             </Heading>
-            <ColorComponent />
+            <ColorComponent setTheme={setTheme} />
             <Theme setTheme={setTheme} />
         </header>
     )

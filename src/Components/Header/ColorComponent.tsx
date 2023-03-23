@@ -1,6 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, Dispatch, SetStateAction } from "react";
 
-export const ColorComponent = () => {
+import { Tooltip } from "react-tooltip";
+
+export const ColorComponent = ({setTheme} : {setTheme: Dispatch<SetStateAction<"light" | "dark">>}) => {
 
     const InputColor = useRef<HTMLInputElement>(null);
 
@@ -15,18 +17,25 @@ export const ColorComponent = () => {
         const g = parseInt(hex.substring(2, 4), 16);
         const b = parseInt(hex.substring(4, 6), 16);
       
-        const hexb = window.getComputedStyle(document.body).getPropertyValue('--bgColor').replace('#', '').replaceAll(' ', '');
+        const mainElement = document.querySelector('main');
+        if (!mainElement) return;
+
+        const rgbMain = window.getComputedStyle(mainElement).getPropertyValue('background-color').replace('#', '').replaceAll(' ', '');
     
-        const rb = parseInt(hexb.substring(0, 2), 16);
-        const gb = parseInt(hexb.substring(2, 4), 16);
-        const bb = parseInt(hexb.substring(4, 6), 16);
+        const splitRgb = rgbMain.substring(rgbMain.indexOf('(') + 1, rgbMain.indexOf(')')).split(',');
+
+        console.log(splitRgb);
+
+        const rb = parseInt(splitRgb[0]);
+        const gb = parseInt(splitRgb[1]);
+        const bb = parseInt(splitRgb[2]);
 
         const diffR = Math.abs(r - rb);
         const diffG = Math.abs(g - gb);
         const diffB = Math.abs(b - bb);
-        
+
         if (diffR <= 25 && diffG <= 25 && diffB <= 25) {
-            //TODO change mode
+            setTheme((prev) => prev === 'dark' ? 'light' : 'dark');
         } 
     }
 
@@ -38,11 +47,16 @@ export const ColorComponent = () => {
     }, [])
 
     return (
-        <input 
-            type="color" 
-            className="w-6 h-6 top-[calc(4vh_+_15px)] left-[30px] border-0 rounded-full pointer mx-[10px] static sm:m-0 sm:absolute md:left-[60px]"
-            onInput={HandleToggleColor}
-            ref={InputColor}
-        />
+        <>
+            <input 
+                type="color" 
+                className="w-6 h-6 top-[calc(4vh_+_15px)] cursor-pointer left-[30px] border-0 rounded-full pointer mx-[10px] static sm:m-0 sm:absolute md:left-[60px]"
+                onInput={HandleToggleColor}
+                ref={InputColor}
+                data-tooltip-id="TipColor"
+                data-tooltip-content="Altere a cor principal do site!"
+            />
+            <Tooltip id="TipColor" events={['hover']} />
+        </>
     );
 }
