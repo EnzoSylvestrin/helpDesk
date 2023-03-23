@@ -11,7 +11,7 @@ type TooltipProps = {
 const Tooltip = ({ element, text, place } : TooltipProps) => {
   return (
     <TooltipRadix.Provider>
-      <TooltipRadix.Root>
+      <TooltipRadix.Root delayDuration={200}>
         <TooltipRadix.Trigger asChild>
           {element}
         </TooltipRadix.Trigger>

@@ -30,6 +30,6 @@ export const Back = ({ url } : {url?: string}) => {
             }
             text="Voltar para tela principal"
             place='right'
-        />  
+        />
     );
 }
