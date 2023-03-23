@@ -102,8 +102,9 @@ export const Description = () => {
             <Input.Root className='!h-full'>
                 <Input.TextArea
                     className='h-full' 
-                    placeholder='Descreva o que ocorreu durante o chamado..'
+                    placeholder="Escreva texto entre '#' para uma surpresa!"
                     onInput={(e) => HandleInput(e)}
+                    title='Digite #corrigir# após o texto para corrigir automaticamente.'
                 />
             </Input.Root>
         </label>

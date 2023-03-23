@@ -19,8 +19,10 @@ export const SelectComponent = ({ placeholder, items, id }: SelectProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const [show, setShow] = useState(false);
 
-    const handleSelectOpen = () => {
-        setIsOpen(true);
+    const handleSelectOpen = (open: boolean) => {
+        if (open) {
+            setIsOpen(true);
+        }
     };
 
     const handleSelectClose = () => {
@@ -32,12 +34,14 @@ export const SelectComponent = ({ placeholder, items, id }: SelectProps) => {
     }, []);
 
     return (
-        <Select.Root required>
+        <Select.Root 
+            required
+            onOpenChange={(open) => handleSelectOpen(open)}
+        >
             <Select.Trigger
                 className="flex items-center justify-between text-sm h-full w-full bg-transparent text-darkColor dark:text-lightColor outline-none"
                 aria-label={placeholder}
                 id={id}
-                onClick={handleSelectOpen}
             >
                 <Select.Value placeholder={placeholder} />
                 <Select.Icon>
