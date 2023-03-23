@@ -6,7 +6,7 @@ type TooltipProps = {
   place?: 'top' | 'bottom' | 'left' | 'right'
 }
 
-const Tooltip = ({ element, text, place } : TooltipProps) => {
+const Tooltip = ({ element, text, place = 'bottom' } : TooltipProps) => {
   return (
     <TooltipRadix.Provider>
       <TooltipRadix.Root delayDuration={200}>
