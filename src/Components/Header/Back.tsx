@@ -23,7 +23,7 @@ export const Back = ({ url } : {url?: string}) => {
             onClick={HandleBack} 
             className="absolute top-[10px] left-5 cursor-pointer z-[100]"
             data-tooltip-id="TipBack"
-            data-tooltip-place="bottom"
+            data-tooltip-place="right"
             data-tooltip-content="Voltar para página inicial"
         >
             <Icon icon={MdOutlineKeyboardBackspace} size={36} />

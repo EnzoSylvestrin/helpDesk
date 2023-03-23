@@ -24,8 +24,6 @@ export const ColorComponent = ({setTheme} : {setTheme: Dispatch<SetStateAction<"
     
         const splitRgb = rgbMain.substring(rgbMain.indexOf('(') + 1, rgbMain.indexOf(')')).split(',');
 
-        console.log(splitRgb);
-
         const rb = parseInt(splitRgb[0]);
         const gb = parseInt(splitRgb[1]);
         const bb = parseInt(splitRgb[2]);
@@ -54,9 +52,10 @@ export const ColorComponent = ({setTheme} : {setTheme: Dispatch<SetStateAction<"
                 onInput={HandleToggleColor}
                 ref={InputColor}
                 data-tooltip-id="TipColor"
+                data-tooltip-place="left"
                 data-tooltip-content="Altere a cor principal do site!"
             />
-            <Tooltip id="TipColor" events={['hover']} />
+            <Tooltip id="TipColor" openOnClick={false}/>
         </>
     );
 }

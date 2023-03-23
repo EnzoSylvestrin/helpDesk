@@ -82,11 +82,11 @@ export default function Home() {
                   />
                 </label>
               </div>
-              <div className='px-2 h-[350px] xs:px-5 xs:w-full xs:flex-none sm:flex-1 sm:py-[10px] md:h-auto p-5 flex flex-col'>
+              <div className='px-2 h-[350px] xs:px-5 xs:w-full xs:flex-none sm:flex-1 sm:py-[10px] sm:h-auto p-5 flex flex-col'>
                 <Description />
               </div>
             </div>
-            <footer className='w-full pt-10 px-[13px] grow-1 xs:px-[25px] md:px-[60px] flex flex-1  items-center justify-between'>
+            <footer className='w-full pt-10 px-[13px] grow-1 xs:px-[25px] md:px-[60px] flex flex-1 items-center justify-between'>
               <Button size='lg' href='/Consulta' text='Consulta' />
               <Button size='lg' type='submit' text='Registrar' />
             </footer>
