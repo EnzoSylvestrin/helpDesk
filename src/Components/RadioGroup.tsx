@@ -7,16 +7,19 @@ type RadioGroupProps = {
     Radios: {
         value: string,
         color: string
-    }[]
+    }[],
+    register?: any,
+    registerName?: string
 }
 
-export const RadioGroup = ({ className, Radios } : RadioGroupProps) => {
+export const RadioGroup = ({ className, Radios, register, registerName }: RadioGroupProps) => {
     return (
         <RadioGroupRadix.Root
             className={clsx("flex flex-col gap-2.5 ml-1", className)}
             aria-label="Status do chamado"
             defaultValue='Concluído'
             required
+            {...register(registerName)}
         >
             <div className="flex flex-col gap-3">
                 {
@@ -37,7 +40,7 @@ export const RadioGroup = ({ className, Radios } : RadioGroupProps) => {
                         )
                     })
                 }
-                
+
             </div>
         </RadioGroupRadix.Root>
     );

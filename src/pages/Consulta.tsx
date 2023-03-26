@@ -1,4 +1,4 @@
-import { MouseEvent, useState } from 'react'; 
+import { MouseEvent, useState } from 'react';
 
 import { IconType } from 'react-icons/lib';
 import { FaGhost, FaHeadset, FaUserAlt } from 'react-icons/fa';
@@ -56,29 +56,29 @@ const Consulta = () => {
                         <label htmlFor='func' className='w-full mt-5 md:w-[30%]'>
                             <Text className={'mb-2 !text-[19px]'}>Funcionário:</Text>
                             <Input.Root>
-                                <Input.Icon icon={FaUserAlt} size={18} colored/>
+                                <Input.Icon icon={FaUserAlt} size={18} colored />
                                 <Input.Select id='func' placeholder='Todos' items={OptionsFunc} />
                             </Input.Root>
                         </label>
                         <label htmlFor='type' className='w-full mt-5 md:w-[30%]'>
                             <Text className={'mb-2 !text-[19px]'}>Tipo:</Text>
                             <Input.Root>
-                                <Input.Icon icon={FaHeadset} size={18} colored/>
+                                <Input.Icon icon={FaHeadset} size={18} colored />
                                 <Input.Select id='type' placeholder='Todos' items={OptionsFunc} />
                             </Input.Root>
                         </label>
                         <label htmlFor='status' className='w-full mt-5 md:w-[30%]'>
                             <Text className={'mb-2 !text-[19px]'}>Status:</Text>
                             <Input.Root>
-                                <Input.Icon icon={TfiMenuAlt} size={18} colored/>
+                                <Input.Icon icon={TfiMenuAlt} size={18} colored />
                                 <Input.Select id='status' placeholder='Todos' items={OptionsFunc} />
                             </Input.Root>
                         </label>
-                        <label htmlFor='fantasy' className='w-full mt-5 md:w-[30%]'>
+                        <label htmlFor='cliente' className='w-full mt-5 md:w-[30%]'>
                             <Text className={'mb-2 !text-[19px]'}>Fantasia:</Text>
                             <Input.Root>
-                                <Input.Icon icon={FaGhost} size={18} colored/>
-                                <Input.Select id='fantasy' placeholder='Todos' items={OptionsFunc} />
+                                <Input.Icon icon={FaUserAlt} size={18} colored />
+                                <Input.Select id='cliente' placeholder='Todos' items={OptionsFunc} />
                             </Input.Root>
                         </label>
                         <label htmlFor='initial' className='w-full mt-5 md:w-[30%]'>
@@ -102,7 +102,7 @@ const Consulta = () => {
                         </div>
                     </div>
                     <div className='w-full h-auto flex items-center flex-col py-5 px-[15px] justify-center md:px-[60px]'>
-                        <div 
+                        <div
                             className='w-full h-full px-5 py-[10px] pl-[30px] rounded-[10px] flex flex-col my-3 relative cursor-pointer shadow-[rgba(0,_0,_0,_0.1)_0px_10px_15px_-3px,_rgba(0,_0,_0,_0.05)_0px_4px_6px_-2px] bg-InputColorLight dark:bg-InputColorDark'
                             onClick={(e) => HandleCardClick(e)}
                         >
@@ -112,7 +112,7 @@ const Consulta = () => {
                                 {
                                     listIcons.map((element, i) => {
                                         return <div className='flex items-center justify-start gap-1 my-3' key={i}>
-                                            <Icon icon={element} size={20} className="w-[26px]" colored/>
+                                            <Icon icon={element} size={20} className="w-[26px]" colored />
                                             <Text className='!text-[22px]'>{listDados[i]}</Text>
                                         </div>
                                     })
@@ -120,7 +120,7 @@ const Consulta = () => {
                                 <Icon icon={HiChevronRight} size={32} className="absolute top-[50%] right-[20px] -translate-y-[50%] transition-transform duration-[400ms]" />
                                 <Text size='lg' className='absolute top-[11.5px] right-[30px] !text-[var(--main)]'>#1</Text>
                             </div>
-                            <div className='flex-col w-full my-2 flex-1' style={{display: 'none'}}>
+                            <div className='flex-col w-full my-2 flex-1' style={{ display: 'none' }}>
                                 <Heading size='sm' className="mb-[5px]">Descrição:</Heading>
                                 <div className='w-full flex items-center cursor-text'>
                                     <Text className={'!text-[19px]'}>Mensagem de teste eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</Text>

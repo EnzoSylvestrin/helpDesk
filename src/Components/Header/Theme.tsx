@@ -1,11 +1,11 @@
-import { useEffect, useState, Dispatch, SetStateAction} from "react";
+import { useEffect, useState, Dispatch, SetStateAction } from "react";
 
 import { BsMoonStarsFill } from 'react-icons/bs';
 import { CgSun } from 'react-icons/cg';
 import { Icon } from "../Icon";
 import Tooltip from "../Tooltip";
 
-export const Theme = ({setTheme} : {setTheme: Dispatch<SetStateAction<"light" | "dark">>}) => {
+export const Theme = ({ setTheme }: { setTheme: Dispatch<SetStateAction<"light" | "dark">> }) => {
 
     const [darkMode, setDarkMode] = useState<boolean>(true);
 
@@ -22,10 +22,10 @@ export const Theme = ({setTheme} : {setTheme: Dispatch<SetStateAction<"light" | 
     }, []);
 
     return (
-        <Tooltip 
+        <Tooltip
             element={
-                <div 
-                    className="p-2 rounded-full static mx-5 cursor-pointer my-[10px] block right-[30px] pointer top-[calc(4vh_+_5px)] hover:bg-lightHover dark:hover:bg-darkHover sm:m-0 sm:absolute sm:right-[60px]"
+                <div
+                    className="p-2 rounded-full static mx-5 cursor-pointer my-[2px] block right-[30px] pointer top-[calc(4vh_+_5px)] hover:bg-lightHover dark:hover:bg-darkHover sm:m-0 sm:absolute sm:right-[60px]"
                     onClick={HandleToggleTheme}
                 >
                     <Icon icon={darkMode ? CgSun : BsMoonStarsFill} size={26} />

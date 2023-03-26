@@ -9,7 +9,8 @@ export const OptionsType = [
     "Android",
     "NF-e",
     "NFC-e",
-    "Outro"
+    "Outro",
+    "CLiente 1"
 ];
 
 export const OptionsFunc = [
@@ -21,5 +22,7 @@ export const OptionsFunc = [
     "Renato",
     "Henrique",
     "Luiz",
-    "Enzo"
+    "Enzo",
+    "Outro",
+    "CLiente 1"
 ];

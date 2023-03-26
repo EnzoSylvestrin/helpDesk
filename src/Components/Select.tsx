@@ -10,12 +10,14 @@ import { Icon } from './Icon';
 import { FormatText } from '@/Utils/Commom';
 
 export type SelectProps = {
-  placeholder: string;
-  items: string[];
-  id: string;
+    placeholder: string;
+    items: string[];
+    id: string;
+    register?: any;
+    registerName?: string,
 };
 
-export const SelectComponent = ({ placeholder, items, id }: SelectProps) => {
+export const SelectComponent = ({ placeholder, items, id, register = null, registerName = '' }: SelectProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const [show, setShow] = useState(false);
 
@@ -34,9 +36,11 @@ export const SelectComponent = ({ placeholder, items, id }: SelectProps) => {
     }, []);
 
     return (
-        <Select.Root 
+        <Select.Root
             required
             onOpenChange={(open) => handleSelectOpen(open)}
+            value="CLiente 1"
+            {...register != null ? { ...register(registerName) } : ''}
         >
             <Select.Trigger
                 className="flex items-center justify-between text-sm h-full w-full bg-transparent text-darkColor dark:text-lightColor outline-none"
@@ -54,7 +58,7 @@ export const SelectComponent = ({ placeholder, items, id }: SelectProps) => {
                     opacity: show ? isOpen ? 1 : 0 : 0,
                 }}
                 transition={{ duration: 0.4 }}
-                style={{ 
+                style={{
                     visibility: show ? 'visible' : 'hidden',
                     position: 'relative'
                 }} // Hide the content during server-side rendering
@@ -69,21 +73,21 @@ export const SelectComponent = ({ placeholder, items, id }: SelectProps) => {
                     <Select.Viewport>
                         <Select.Group>
                             {items.map((element, i) => {
-                            return (
-                                <SelectItem
-                                value={element}
-                                className={
-                                    i === 0
-                                    ? 'rounded-t-lg'
-                                    : i === items.length - 1
-                                    ? 'rounded-b-lg'
-                                    : ''
-                                }
-                                key={i}
-                                >
-                                {FormatText(element)}
-                                </SelectItem>
-                            );
+                                return (
+                                    <SelectItem
+                                        value={element}
+                                        className={
+                                            i === 0
+                                                ? 'rounded-t-lg'
+                                                : i === items.length - 1
+                                                    ? 'rounded-b-lg'
+                                                    : ''
+                                        }
+                                        key={i}
+                                    >
+                                        {FormatText(element)}
+                                    </SelectItem>
+                                );
                             })}
                         </Select.Group>
                     </Select.Viewport>
@@ -102,12 +106,12 @@ type SelectItemProps = {
     className?: string;
 };
 
-const SelectItem = ({ children, value, className } : SelectItemProps) => {
+const SelectItem = ({ children, value, className }: SelectItemProps) => {
     return (
         <Select.Item
             className={clsx(
-                'text-sm text-darkColor bg-InputColorLight flex cursor-pointer items-center', 
-                'h-5 pl-6 px-5 py-4 relative select-none data-[disabled]:text-gray-400', 
+                'text-sm text-darkColor bg-InputColorLight flex cursor-pointer items-center',
+                'h-5 pl-6 px-5 py-4 relative select-none data-[disabled]:text-gray-400',
                 'data-[disabled]:pointer-events-none data-[highlighted]:outline-none',
                 'data-[highlighted]:bg-lightHover data-[highlighted]:text-[var(--main)]',
                 'dark:text-lightColor dark:bg-InputColorDark dark:data-[highlighted]:bg-darkHover ',

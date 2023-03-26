@@ -5,8 +5,8 @@ import { Configuration, OpenAIApi } from "openai";
 import { Input } from "./Input";
 import { Text } from "./Text";
 
-export const Description = () => {
-    
+export const Description = ({ register }: { register: any }) => {
+
     const model = 'text-davinci-003';
     const maxTokens = 300;
     const temperature = 0.2;
@@ -25,13 +25,13 @@ export const Description = () => {
         const text = description.value;
 
         const start = text.indexOf('#');
-        
+
         if (start !== -1) {
             const end = text.indexOf('#', start + 1);
-            
+
             if (end !== -1) {
                 const match = text.slice(start + 1, end).trim();
-    
+
                 description.disabled = true;
                 if (match.toLowerCase() == 'corrigir') {
                     let prompt = description.value;
@@ -54,28 +54,28 @@ export const Description = () => {
         }).then((response) => {
             const text = description.value;
             let completions = response.data.choices[0].text;
-            
+
             if (completions != null) {
                 completions = completions.replaceAll('\n', ' ').trim();
                 const start = text.indexOf('#');
-        
+
                 const end = text.indexOf('#', start + 1);
-                
+
                 const match = text.slice(start + 1, end);
-                
+
                 let NewText = description.value
-                        .replace(match, completions)
-                        .replaceAll('#', '');
+                    .replace(match, completions)
+                    .replaceAll('#', '');
                 description.value = NewText;
             }
         }).catch((error) => {
             console.error(error);
         }).finally(() => {
             description.disabled = false;
-        });       
+        });
     }
 
-    const CorrectText =  (input: string, description: HTMLTextAreaElement) => {
+    const CorrectText = (input: string, description: HTMLTextAreaElement) => {
         openai.createEdit({
             model: modelEdit,
             input,
@@ -83,10 +83,10 @@ export const Description = () => {
             temperature
         }).then((response) => {
             let completions = response.data.choices[0].text;
-        
+
             if (completions != null) {
                 completions = completions.replaceAll('\n', ' ').trim();
-            
+
                 description.value = completions;
             }
         }).catch((error) => {
@@ -101,10 +101,11 @@ export const Description = () => {
             <Text className={'mb-2 !text-[19px]'}>Mensagem:</Text>
             <Input.Root className='!h-full'>
                 <Input.TextArea
-                    className='h-full' 
+                    className='h-full'
                     placeholder="Escreva texto entre '#' para uma surpresa!"
                     onInput={(e) => HandleInput(e)}
                     title='Digite #corrigir# após o texto para corrigir automaticamente.'
+                    {...register('descricao')}
                 />
             </Input.Root>
         </label>

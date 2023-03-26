@@ -8,14 +8,13 @@ datasource db {
 }
 
 model chamados {
-  idchamados  Int    @id
+  idchamados  Int    @id @default(autoincrement())
   funcionario String @db.VarChar(20)
   cliente     String @db.VarChar(80)
   tipo        String @db.VarChar(50)
   status      Int    @db.TinyInt
   duracao     String @db.VarChar(12)
   descricao   String @db.VarChar(1500)
-  chamadoscol String @db.VarChar(45)
 }
 
 model clientes {
