@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 export default async function handle(req: any, res : any) {
 
-  const reqBody : FormInputs = req.body;
+  const reqBody : any = req.body;
 
   await prisma.chamados.create({
     data: {
@@ -14,7 +14,7 @@ export default async function handle(req: any, res : any) {
       tipo: reqBody.tipo,
       descricao: reqBody.descricao,
       duracao: reqBody.duracao,
-      status: reqBody.status == "Pendente" ? 1 : 0
+      status: reqBody.status == "Pendente" ? 1 : 0,
     }
   }).then(() => {
     res.status(200).json({ sucess: true });

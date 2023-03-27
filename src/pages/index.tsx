@@ -8,6 +8,8 @@ import { OptionsFunc, OptionsType } from '@/Utils/Options';
 
 import Api from '@/Utils/Api';
 
+import Router from 'next/router';
+
 import { Header } from '@/Components/Header/Header';
 import { Timer } from '@/Components/Timer';
 import { Input } from '@/Components/Input';
@@ -54,9 +56,22 @@ export default function Home() {
   // }
 
   const onSubmit: SubmitHandler<FormInputs> = (data: FormInputs) => {
-    console.log(JSON.stringify(data));
-    //Api.post('/InsertChamado', {data})
+    //InsertChamado(data);
   };
+
+  const InsertChamado = async (data: FormInputs) => {
+    if (!loading) {
+      setLoading(true);
+      const resultInsert = await Api.post<{success?: boolean, error?: boolean}>('/InsertChamado', {data})
+      if (resultInsert.data.success != null) {
+        Router.push('/Consulta');
+      }
+      else {
+        setLoading(false);
+        console.error(resultInsert.data.error);
+      }
+    }
+  }
 
   return (
     <>
