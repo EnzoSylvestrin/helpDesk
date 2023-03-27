@@ -4,6 +4,8 @@ import clsx from 'clsx';
 
 import { Icon, IconProps } from './Icon';
 import { SelectComponent, SelectProps } from './Select';
+import { UseFormRegister } from 'react-hook-form';
+import { FormInputs } from '@/pages';
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {}
 
@@ -56,9 +58,12 @@ const InputSelect = ({ ...props } : SelectProps) => {
 }
 
 
-type TextAreaProps = HTMLAttributes<HTMLTextAreaElement>;
+type TextAreaProps = HTMLAttributes<HTMLTextAreaElement> & {
+    register?: UseFormRegister<FormInputs>, 
+    required?: boolean  
+};
 
-const InputTextArea = ({ className, ...props } : TextAreaProps) => {
+const InputTextArea = ({ className, register, required, ...props } : TextAreaProps) => {
     return (
         <textarea
             className={clsx(
@@ -66,7 +71,7 @@ const InputTextArea = ({ className, ...props } : TextAreaProps) => {
                 'placeholder:text-slate-700 dark:text-gray-50 dark:placeholder:text-gray-500',
                 className
             )}
-            required
+            {...register != null ? {...register('descricao', {required})} : ''}
             {...props}
         />
     )

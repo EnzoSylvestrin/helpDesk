@@ -4,8 +4,15 @@ import { Configuration, OpenAIApi } from "openai";
 
 import { Input } from "./Input";
 import { Text } from "./Text";
+import { FormInputs } from "@/pages";
+import { UseFormRegister } from "react-hook-form";
 
-export const Description = ({ register }: { register: any }) => {
+type DescriptionProps = { 
+    register: UseFormRegister<FormInputs>, 
+    required?: boolean 
+}
+
+export const Description = ({ register, required }: DescriptionProps) => {
 
     const model = 'text-davinci-003';
     const maxTokens = 300;
@@ -103,9 +110,10 @@ export const Description = ({ register }: { register: any }) => {
                 <Input.TextArea
                     className='h-full'
                     placeholder="Escreva texto entre '#' para uma surpresa!"
-                    onInput={(e) => HandleInput(e)}
+                    onInput={(e: any) => HandleInput(e)}
                     title='Digite #corrigir# após o texto para corrigir automaticamente.'
-                    {...register('descricao')}
+                    register={register}
+                    required={required}
                 />
             </Input.Root>
         </label>

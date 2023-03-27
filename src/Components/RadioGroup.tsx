@@ -19,7 +19,7 @@ export const RadioGroup = ({ className, Radios, register, registerName }: RadioG
             aria-label="Status do chamado"
             defaultValue='Concluído'
             required
-            {...register(registerName)}
+            {...register(registerName, {required: true})}
         >
             <div className="flex flex-col gap-3">
                 {

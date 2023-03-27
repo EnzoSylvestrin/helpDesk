@@ -9,15 +9,15 @@ import { BiCheck, BiChevronDown, BiChevronUp } from 'react-icons/bi';
 import { Icon } from './Icon';
 import { FormatText } from '@/Utils/Commom';
 
-export type SelectProps = {
+export type SelectProps = any & {
     placeholder: string;
     items: string[];
     id: string;
-    register?: any;
-    registerName?: string,
+    value?: string,
+    onChange?: any
 };
 
-export const SelectComponent = ({ placeholder, items, id, register = null, registerName = '' }: SelectProps) => {
+export const SelectComponent = ({ placeholder, items, id, value, onChange }: SelectProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const [show, setShow] = useState(false);
 
@@ -39,8 +39,8 @@ export const SelectComponent = ({ placeholder, items, id, register = null, regis
         <Select.Root
             required
             onOpenChange={(open) => handleSelectOpen(open)}
-            value="CLiente 1"
-            {...register != null ? { ...register(registerName) } : ''}
+            value={value}
+            onValueChange={onChange}
         >
             <Select.Trigger
                 className="flex items-center justify-between text-sm h-full w-full bg-transparent text-darkColor dark:text-lightColor outline-none"
@@ -72,7 +72,7 @@ export const SelectComponent = ({ placeholder, items, id, register = null, regis
                     </Select.ScrollUpButton>
                     <Select.Viewport>
                         <Select.Group>
-                            {items.map((element, i) => {
+                            {items.map((element: any, i: number) => {
                                 return (
                                     <SelectItem
                                         value={element}
@@ -106,7 +106,7 @@ type SelectItemProps = {
     className?: string;
 };
 
-const SelectItem = ({ children, value, className }: SelectItemProps) => {
+const SelectItem = React.forwardRef(({ children, className, value } : SelectItemProps, forwardedRef : any) => {
     return (
         <Select.Item
             className={clsx(
@@ -118,6 +118,7 @@ const SelectItem = ({ children, value, className }: SelectItemProps) => {
                 className
             )}
             value={value}
+            ref={forwardedRef}
         >
             <Select.ItemText>{children}</Select.ItemText>
             <Select.ItemIndicator className="absolute left-0 w-6 inline-flex items-center justify-center">
@@ -125,4 +126,4 @@ const SelectItem = ({ children, value, className }: SelectItemProps) => {
             </Select.ItemIndicator>
         </Select.Item>
     );
-};
+});

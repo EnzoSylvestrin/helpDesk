@@ -1,18 +1,26 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
+import { UseFormRegister, UseFormSetValue } from "react-hook-form";
 
 import { BsClockFill } from "react-icons/bs";
+
+import { FormInputs } from "@/pages";
 
 import { Button } from "./Button";
 import { Icon } from "./Icon";
 import { Text } from "./Text";
 
-export const Timer = ({ register }: { register: any }) => {
-    const duracaoRef = useRef<HTMLInputElement>(null);
+type TimerProps = { 
+    register: UseFormRegister<FormInputs>,
+    setValue: UseFormSetValue<FormInputs>,
+}
+
+export const Timer = ({ register, setValue }: TimerProps) => {
 
     const [time, setTime] = useState<string>('00:00:00');
     const [reset, setReset] = useState<boolean>(false);
 
     const [intervalId, setIntervalId] = useState<NodeJS.Timer | null>(null);
+
 
     const startTimer = () => {
         if (!intervalId) {
@@ -51,9 +59,7 @@ export const Timer = ({ register }: { register: any }) => {
         }
         seg += 1;
         let FormatedTime = `${FormatTime(hour)}:${FormatTime(min)}:${FormatTime(seg)}`;
-        if (duracaoRef.current != null) {
-            duracaoRef.current.value = FormatedTime;
-        }
+        setValue('duracao', FormatedTime);
         return FormatedTime;
     }
 
@@ -64,13 +70,13 @@ export const Timer = ({ register }: { register: any }) => {
     return (
         <div className="pt-4 flex flex-col items-center h-full">
             <div className="flex items-center gap-1 mb-2">
-                <input type="hidden" id="duracao" name="Duracao" {...register('duracao')} ref={duracaoRef} value="" />
+                <input type="hidden" id="duracao" {...register('duracao')} />
                 <Icon icon={BsClockFill} size={18} colored />
                 <Text size="lg" className="w-[85px]">
                     {time}
                 </Text>
             </div>
-            <div className="flex items-center justify-center gap-[10px]">
+            <div className="flex items-center justify-center gap-1">
                 <Button text="Iniciar" size="sm" onClick={startTimer} />
                 <Button text={!reset ? "Parar" : "Limpar"} size="sm" onClick={stopTimer} />
             </div>
