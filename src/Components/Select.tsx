@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ChangeEvent, ReactNode, useState } from 'react';
 import { motion, useIsomorphicLayoutEffect } from 'framer-motion';
 
 import * as Select from '@radix-ui/react-select';
@@ -14,7 +14,7 @@ export type SelectProps = any & {
     items: string[];
     id: string;
     value?: string,
-    onChange?: any
+    onChange?: (e: ChangeEvent<HTMLInputElement> | string) => void
 };
 
 export const SelectComponent = ({ placeholder, items, id, value, onChange }: SelectProps) => {

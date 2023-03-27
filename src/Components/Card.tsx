@@ -48,6 +48,7 @@ export const Card = ({Chamado} : CardProps) => {
         <div
             className='w-full h-full px-5 py-[10px] pl-[30px] rounded-[10px] flex flex-col my-3 relative cursor-pointer shadow-[rgba(0,_0,_0,_0.1)_0px_10px_15px_-3px,_rgba(0,_0,_0,_0.05)_0px_4px_6px_-2px] bg-InputColorLight dark:bg-InputColorDark'
             onClick={(e) => HandleCardClick(e)}
+            key={Chamado.idchamados}
         >
             <div className={clsx(
                 'absolute left-0 top-0 h-full w-5 rounded-tl-[10px] rounded-bl-[10px]',
