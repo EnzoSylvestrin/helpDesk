@@ -14,7 +14,7 @@ type DescriptionProps = {
 
 export const Description = ({ register, required }: DescriptionProps) => {
 
-    const model = 'text-davinci-003';
+    const model = 'gpt-3.5-turbo';
     const maxTokens = 300;
     const temperature = 0.2;
 
@@ -110,7 +110,7 @@ export const Description = ({ register, required }: DescriptionProps) => {
                 <Input.TextArea
                     className='h-full'
                     placeholder="Digite #olá chatgpt# para ver algo legal!"
-                    onInput={(e: any) => HandleInput(e)}
+                    onInput={(e) => HandleInput(e)}
                     title='Digite #corrigir# após o texto para corrigir automaticamente.'
                     register={register}
                     required={required}
