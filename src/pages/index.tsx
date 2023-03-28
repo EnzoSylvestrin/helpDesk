@@ -81,7 +81,7 @@ export default function Home() {
           <Header pageTitle='Cadastro de chamados' setTheme={setTheme} />
           <form method='POST' action='/api/InsertChamado' className='min-h-[90vh] flex flex-col justify-start' onSubmit={handleSubmit(onSubmit)}>
             <Timer register={register} setValue={setValue} />
-            <div className='h-full py-[10px] px-[5px] items-stretch flex flex-col flex-wrap pt-3 md:px-10 sm:flex-row'>
+            <div className='min-h-[60vh] py-[10px] px-[5px] items-stretch flex flex-col flex-wrap pt-3 md:px-10 sm:flex-row'>
               <div className='w-full max-w-full px-2 py-[10px] xs:px-5 xs:py-[10px] sm:w-[45%] sm:max-w-[450px] p-5 h-[85%] gap-5 flex flex-col'>
                 <label htmlFor='user'>
                   <Text className={'mb-3 !text-[19px]'}>Funcionário:</Text>

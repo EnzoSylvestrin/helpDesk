@@ -109,7 +109,7 @@ export const Description = ({ register, required }: DescriptionProps) => {
             <Input.Root className='!h-full'>
                 <Input.TextArea
                     className='h-full'
-                    placeholder="Escreva texto entre '#' para uma surpresa!"
+                    placeholder="Digite #olá chatgpt# para ver algo legal!"
                     onInput={(e: any) => HandleInput(e)}
                     title='Digite #corrigir# após o texto para corrigir automaticamente.'
                     register={register}
