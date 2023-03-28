@@ -1,17 +1,18 @@
 import { PrismaClient } from '@prisma/client';
+import { Filters } from '../Consulta';
 
 const prisma = new PrismaClient();
 
 export default async function handle(req: any, res : any) {
 
-    // const filters = req.query;
+    // const filters : Filters = req.query;
 
     // const whereClauses: any[] = [];
 
-    // if (filters.Func) {
+    // if (filters.funcionario) {
     //     whereClauses.push({
     //         funcionario: {
-    //             equals: filters.Func,
+    //             equals: filters.funcionario,
     //         },
     //     });
     // }
@@ -24,34 +25,34 @@ export default async function handle(req: any, res : any) {
     //     });
     // }
 
-    // if (filters.stats) {
+    // if (filters.status) {
     //     whereClauses.push({
-    //             status: {
-    //             equals: filters.stats,
+    //         status: {
+    //             equals: filters.status,
     //         },
     //     });
     // }
 
     // if (filters.cliente) {
     //     whereClauses.push({
-    //             cliente: {
+    //         cliente: {
     //             equals: filters.cliente,
     //         },
     //     });
     // }
 
-    // if (filters.initial && filters.final) {
+    // if (filters.dataInicial && filters.dataFinal) {
     //     whereClauses.push({
     //         createdAt: {
-    //             gte: new Date(filters.initial),
-    //             lte: new Date(filters.final),
+    //             gte: new Date(filters.dataInicial),
+    //             lte: new Date(filters.dataFinal),
     //         },
     //     });
     // }
-    // else if (filters.initial) {
+    // else if (filters.dataInicial) {
     //     whereClauses.push({
     //         createdAt: {
-    //             gte: new Date(filters.initial),
+    //             gte: new Date(filters.dataInicial),
     //             lte: new Date(),
     //         }
     //     })

@@ -9,7 +9,7 @@ import { BiCheck, BiChevronDown, BiChevronUp } from 'react-icons/bi';
 import { Icon } from './Icon';
 import { FormatText } from '@/Utils/Commom';
 
-export type SelectProps = any & {
+export type SelectProps = {
     placeholder: string;
     items: string[];
     id: string;

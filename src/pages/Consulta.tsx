@@ -16,7 +16,7 @@ import { Card } from '@/Components/Card';
 import { Filter } from '@/Components/Filter';
 import { AxiosResponse } from 'axios';
 
-type Filters = {
+export type Filters = {
     funcionario?: string,
     tipo?: string,
     status?: 'Concluido' | 'Pendente',
@@ -30,7 +30,9 @@ const Consulta = () => {
     const [theme, setTheme] = useState<'dark' | 'light'>('dark');
     const [chamados, setChamados] = useState<JSX.Element[]>([]);
 
-    const [filters, setFilters] = useState<Filters>()
+    const [filters, setFilters] = useState<Filters>({})
+
+    const optionsStats = ["Pendente", "Concluído"];
 
     useEffect(() => {
         //GetChamados();
@@ -42,13 +44,57 @@ const Consulta = () => {
     }
 
     const OnChangeFilters = (e: string | ChangeEvent<HTMLInputElement>) => {
-        let value = typeof e === 'string' ? e : e.currentTarget.name;
-        GetChamadosByFilters(value);
+        let newFilters = filters;
+        if (typeof e === 'string') {
+            if (OptionsFunc.includes(e)) {
+                newFilters = ({
+                    ...filters,
+                    funcionario: e
+                });
+            }
+            else if (OptionsType.includes(e)) {
+                newFilters = ({
+                    ...filters,
+                    tipo: e
+                });
+            }      
+            else if (optionsStats.includes(e)) {
+                newFilters = ({
+                    ...filters,
+                    //@ts-ignore
+                    status: e
+                })
+            }
+            else {
+                newFilters = ({
+                    ...filters,
+                    cliente: e
+                })
+            }
+        }
+        else {
+            let target = e.currentTarget;
+            if (target.id === "initial") {
+                newFilters = ({
+                    ...filters,
+                    dataInicial: target.value
+                })
+            }
+            else {
+                newFilters = ({
+                    ...filters,
+                    dataFinal: target.value
+                })
+            }
+        }
+        GetChamadosByFilters(newFilters);
     }
 
-    const GetChamadosByFilters = async (value : string) => {
-        const responseFilters = await Api.get<chamados[]>('/Filters', { params: filters });
-        SetChamados(responseFilters);
+    const GetChamadosByFilters = async (newFilters: Filters) => {
+        console.log(newFilters);
+        // const responseFilters = await Api.get<chamados[]>('/Filters', { params: newFilters });
+        // SetChamados(responseFilters);
+        // setFilters(newFilters);
     }
 
     const SetChamados = (chamadosResult: AxiosResponse<chamados[], any>) => {
@@ -87,7 +133,7 @@ const Consulta = () => {
                         <Filter
                             id='stats'
                             label='Status:'
-                            items={["Pendente", "Concluído"]}
+                            items={optionsStats}
                             placeHolder="Todos"
                             type="select"
                             icon={TfiMenuAlt}
