@@ -14,6 +14,7 @@ import { Heading } from '@/Components/Heading';
 import { Button } from '@/Components/Button';
 import { Card } from '@/Components/Card';
 import { Filter } from '@/Components/Filter';
+import { AxiosResponse } from 'axios';
 
 type Filters = {
     funcionario?: string,
@@ -37,21 +38,25 @@ const Consulta = () => {
 
     const GetChamados = async () => {
         const chamadosResult = await Api.get<chamados[]>('/Chamados');
-        
+        SetChamados(chamadosResult);
+    }
+
+    const OnChangeFilters = (e: string | ChangeEvent<HTMLInputElement>) => {
+        let value = typeof e === 'string' ? e : e.currentTarget.name;
+        GetChamadosByFilters(value);
+    }
+
+    const GetChamadosByFilters = async (value : string) => {
+        const responseFilters = await Api.get<chamados[]>('/Filters', { params: filters });
+        SetChamados(responseFilters);
+    }
+
+    const SetChamados = (chamadosResult: AxiosResponse<chamados[], any>) => {
         let listChamados : JSX.Element[] = []; 
         for (let chamado of chamadosResult.data) {
             listChamados.push(<Card Chamado={chamado} />)
         }
         setChamados(listChamados);
-    }
-
-    const OnChangeFilters = (e: string | ChangeEvent<HTMLInputElement>) => {
-        if (typeof e == 'string') {
-            //TODO select change
-        }
-        else {
-            //TODO date change
-        }
     }
 
     return (
