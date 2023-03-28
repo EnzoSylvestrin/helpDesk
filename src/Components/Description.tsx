@@ -14,7 +14,7 @@ type DescriptionProps = {
 
 export const Description = ({ register, required }: DescriptionProps) => {
 
-    const model = 'gpt-3.5-turbo';
+    const model = 'text-davinci-003';
     const maxTokens = 300;
     const temperature = 0.2;
 
