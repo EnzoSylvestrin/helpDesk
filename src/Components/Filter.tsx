@@ -29,7 +29,7 @@ export const Filter = ({ id, label, items, placeHolder, icon, type, disabled = f
                     ''
                 }
                 {
-                    type === 'select'
+                    type === 'select' && items
                     ?
                     <Input.Select id={id} placeholder={placeHolder} items={items} onChange={onChange} />
                     :
