@@ -18,7 +18,7 @@ type CardProps = {
     Chamado: chamados
 }
 
-export const Card = ({Chamado} : CardProps) => {
+export const Card = ({ Chamado }: CardProps) => {
 
     const listIcons: IconType[] = [
         FaUserAlt,
@@ -27,10 +27,16 @@ export const Card = ({Chamado} : CardProps) => {
         AiFillClockCircle
     ]
 
+    const FormatData = (data: Date) => {
+        let date = data.toString().substring(0, 10);
+        let splitedDate = date.split('-');
+        return `${splitedDate[2]}/${splitedDate[1]}/${splitedDate[0]}`;
+    }
+
     const listDados: string[] = [
         Chamado.cliente,
         Chamado.tipo,
-        Chamado.duracao, //Chamado.data
+        FormatData(Chamado.createdAt),
         Chamado.duracao
     ]
 
@@ -48,13 +54,12 @@ export const Card = ({Chamado} : CardProps) => {
         <div
             className='w-full h-full px-5 py-[10px] pl-[30px] rounded-[10px] flex flex-col my-3 relative cursor-pointer shadow-[rgba(0,_0,_0,_0.1)_0px_10px_15px_-3px,_rgba(0,_0,_0,_0.05)_0px_4px_6px_-2px] bg-InputColorLight dark:bg-InputColorDark'
             onClick={(e) => HandleCardClick(e)}
-            key={Chamado.idchamados}
         >
             <div className={clsx(
                 'absolute left-0 top-0 h-full w-5 rounded-tl-[10px] rounded-bl-[10px]',
                 {
                     "bg-green-600": Chamado.status === 0,
-                    "bg-orange-500": Chamado.status === 1 
+                    "bg-orange-500": Chamado.status === 1
                 }
             )} />
             <div className='relative'>

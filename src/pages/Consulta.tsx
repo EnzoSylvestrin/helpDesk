@@ -6,7 +6,7 @@ import { TfiMenuAlt } from 'react-icons/tfi';
 import { OptionsFunc, OptionsType } from '@/Utils/Options';
 import Api from '@/Utils/Api';
 
-import { chamados } from '@prisma/client';
+import { chamados, clientes } from '@prisma/client';
 
 import { HeadComponent } from "@/Components/HeadComponent";
 import { Header } from '@/Components/Header/Header';
@@ -15,6 +15,9 @@ import { Button } from '@/Components/Button';
 import { Card } from '@/Components/Card';
 import { Filter } from '@/Components/Filter';
 import { AxiosResponse } from 'axios';
+import { Text } from '@/Components/Text';
+import { useRouter } from 'next/router';
+import { Loading } from '@/Components/Loading';
 
 export type Filters = {
     funcionario?: string,
@@ -28,20 +31,41 @@ export type Filters = {
 const Consulta = () => {
 
     const [theme, setTheme] = useState<'dark' | 'light'>('dark');
-    const [chamados, setChamados] = useState<JSX.Element[]>([]);
 
+    const [chamados, setChamados] = useState<JSX.Element[]>([]);
     const [filters, setFilters] = useState<Filters>({})
 
+    const [disabledDate, setDisabledDate] = useState(true);
+
+    const [optionsClientes, setOptionsClientes] = useState<string[]>([]);
     const optionsStats = ["Pendente", "Concluído"];
 
+    const [loading, setLoading] = useState(true);
+
+    const router = useRouter();
+
     useEffect(() => {
-        //GetChamados();
-    });
+        GetChamados();
+        GetOptionsCLientes();
+    }, []);
 
     const GetChamados = async () => {
         const chamadosResult = await Api.get<chamados[]>('/Chamados');
         SetChamados(chamadosResult);
+        setLoading(false);
     }
+
+    const GetOptionsCLientes = async () => {
+        const response = await Api.get<clientes[]>('/Clientes');
+
+        let options: string[] = [];
+        response.data.forEach((cliente) => {
+            options.push(cliente.nome)
+        })
+
+        setOptionsClientes(options);
+    }
+
 
     const OnChangeFilters = (e: string | ChangeEvent<HTMLInputElement>) => {
         let newFilters = filters;
@@ -57,7 +81,7 @@ const Consulta = () => {
                     ...filters,
                     tipo: e
                 });
-            }      
+            }
             else if (optionsStats.includes(e)) {
                 newFilters = ({
                     ...filters,
@@ -79,6 +103,7 @@ const Consulta = () => {
                     ...filters,
                     dataInicial: target.value
                 })
+                setDisabledDate(false);
             }
             else {
                 newFilters = ({
@@ -91,18 +116,26 @@ const Consulta = () => {
     }
 
     const GetChamadosByFilters = async (newFilters: Filters) => {
-        console.log(newFilters);
-        // const responseFilters = await Api.get<chamados[]>('/Filters', { params: newFilters });
-        // SetChamados(responseFilters);
-        // setFilters(newFilters);
+        try {
+            const responseFilters = await Api.get<chamados[]>('/Filters', { params: newFilters });
+            SetChamados(responseFilters);
+            setFilters(newFilters);
+        }
+        catch (error) {
+            console.error(error);
+        }
     }
 
     const SetChamados = (chamadosResult: AxiosResponse<chamados[], any>) => {
-        let listChamados : JSX.Element[] = []; 
+        let listChamados: JSX.Element[] = [];
         for (let chamado of chamadosResult.data) {
-            listChamados.push(<Card Chamado={chamado} />)
+            listChamados.push(<Card Chamado={chamado} key={`#${chamado.idchamados}`} />)
         }
         setChamados(listChamados);
+    }
+
+    const HandleGoBack = () => {
+        router.back();
     }
 
     return (
@@ -142,7 +175,7 @@ const Consulta = () => {
                         <Filter
                             id='cliente'
                             label='Cliente:'
-                            items={OptionsType}
+                            items={optionsClientes}
                             type="select"
                             placeHolder="Todos"
                             icon={FaUserAlt}
@@ -160,19 +193,30 @@ const Consulta = () => {
                             label='Data Final:'
                             type='date'
                             placeHolder=''
-                            disabled
+                            disabled={disabledDate}
                             onChange={(e) => OnChangeFilters(e)}
                         />
                     </div>
                     <div className="flex flex-col text-sm">
                         <Heading align='center'>Total de registros: <span className={'text-[var(--main)]'}>{chamados.length}</span></Heading>
-                        <div className="mt-5 flex items-center justify-center gap-[10px]">
-                            <Button text='Expandir' size="sm" />
-                            <Button text='Colapsar' size="sm" />
-                        </div>
                     </div>
                     <div className='w-full h-auto flex items-center flex-col py-5 px-[15px] justify-center md:px-[60px]'>
-                        {chamados}
+                        {
+                            loading
+                                ?
+                                <Loading align='center' w='250px' h='250px' />
+                                :
+                                chamados.length === 0
+                                    ?
+                                    <div className='flex-1 items-center justify-center w-full'>
+                                        <Text size="lg">
+                                            Nenhum chamado encontrado!
+                                        </Text>
+                                        <Button text='Voltar' size='md' onClick={HandleGoBack} />
+                                    </div>
+                                    :
+                                    chamados
+                        }
                     </div>
                 </main>
             </section>

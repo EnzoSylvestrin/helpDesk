@@ -18,6 +18,7 @@ import { RadioGroup } from '@/Components/RadioGroup';
 import { Button } from '@/Components/Button';
 import { HeadComponent } from '@/Components/HeadComponent';
 import { Description } from '@/Components/Description';
+import { clientes } from '@prisma/client';
 
 export type FormInputs = {
   funcionario: string,
@@ -40,35 +41,35 @@ export default function Home() {
   const [optionsClientes, setOptionsClientes] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
 
-  // useEffect(() => {
-  //   GetOptionsCLientes();
-  // }, [])
+  useEffect(() => {
+    GetOptionsCLientes();
+  }, [])
 
-  // const GetOptionsCLientes = async () => {
-  //   const response = await Api.get<clientes[]>('/Clientes');
+  const GetOptionsCLientes = async () => {
+    const response = await Api.get<clientes[]>('/Clientes');
 
-  //   let options: string[] = [];
-  //   response.data.forEach((cliente) => {
-  //     options.push(cliente.nome)
-  //   })
+    let options: string[] = [];
+    response.data.forEach((cliente) => {
+      options.push(cliente.nome)
+    })
 
-  //   setOptionsClientes(options);
-  // }
+    setOptionsClientes(options);
+  }
 
   const onSubmit: SubmitHandler<FormInputs> = (data: FormInputs) => {
-    //InsertChamado(data);
+    InsertChamado(data);
   };
 
   const InsertChamado = async (data: FormInputs) => {
     if (!loading) {
       setLoading(true);
-      const resultInsert = await Api.post<{success?: boolean, error?: boolean}>('/InsertChamado', {data})
-      if (resultInsert.data.success != null) {
+      try {
+        await Api.post('/InsertChamado', { data });
         Router.push('/Consulta');
       }
-      else {
+      catch (error) {
         setLoading(false);
-        console.error(resultInsert.data.error);
+        console.error(error);
       }
     }
   }
@@ -90,7 +91,7 @@ export default function Home() {
                     <Controller
                       name='funcionario'
                       control={control}
-                      render={({ field }) => 
+                      render={({ field }) =>
                         <Input.Select
                           placeholder='Selecione o funcionário...'
                           items={OptionsFunc}
@@ -109,10 +110,10 @@ export default function Home() {
                     <Controller
                       name='cliente'
                       control={control}
-                      render={({ field }) => 
+                      render={({ field }) =>
                         <Input.Select
                           placeholder='Selecione o cliente...'
-                          items={OptionsFunc}
+                          items={optionsClientes}
                           id={'cliente'}
                           value={field.value}
                           onChange={field.onChange}
@@ -128,7 +129,7 @@ export default function Home() {
                     <Controller
                       name='tipo'
                       control={control}
-                      render={({ field }) => 
+                      render={({ field }) =>
                         <Input.Select
                           placeholder='Selecione o tipo...'
                           items={OptionsType}
@@ -138,7 +139,7 @@ export default function Home() {
                         />
                       }
                     />
-                   
+
                   </Input.Root>
                 </label>
                 <label className='mt-5'>
