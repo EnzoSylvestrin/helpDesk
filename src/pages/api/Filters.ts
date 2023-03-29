@@ -5,41 +5,41 @@ const prisma = new PrismaClient();
 
 export default async function handle(req: any, res : any) {
 
-    const filters : Filters = req.query;
+    // const filters : Filters = req.query;
 
-    const whereClauses: Prisma.chamadosWhereInput[] = [];
+    // const whereClauses: Prisma.chamadosWhereInput[] = [];
 
-    if (filters.funcionario) {
-        whereClauses.push({
-            funcionario: {
-                equals: filters.funcionario,
-            },
-        });
-    }
+    // if (filters.funcionario) {
+    //     whereClauses.push({
+    //         funcionario: {
+    //             equals: filters.funcionario,
+    //         },
+    //     });
+    // }
 
-    if (filters.tipo) {
-        whereClauses.push({
-            tipo: {
-                equals: filters.tipo,
-            },
-        });
-    }
+    // if (filters.tipo) {
+    //     whereClauses.push({
+    //         tipo: {
+    //             equals: filters.tipo,
+    //         },
+    //     });
+    // }
 
-    if (filters.status) {
-        whereClauses.push({
-            status: {
-                equals: filters.status === 'Concluido' ? 0 : 1,
-            },
-        });
-    }
+    // if (filters.status) {
+    //     whereClauses.push({
+    //         status: {
+    //             equals: filters.status === 'Concluido' ? 0 : 1,
+    //         },
+    //     });
+    // }
 
-    if (filters.cliente) {
-        whereClauses.push({
-            cliente: {
-                equals: filters.cliente,
-            },
-        });
-    }
+    // if (filters.cliente) {
+    //     whereClauses.push({
+    //         cliente: {
+    //             equals: filters.cliente,
+    //         },
+    //     });
+    // }
 
     // if (filters.dataInicial && filters.dataFinal) {
     //     whereClauses.push({
@@ -58,18 +58,18 @@ export default async function handle(req: any, res : any) {
     //     })
     // }
 
-    await prisma.chamados.findMany({
-        where: {
-            OR: whereClauses,
+    // await prisma.chamados.findMany({
+    //     where: {
+    //         OR: whereClauses,
 
-        },
-        orderBy: {
-            idchamados: 'desc'
-        }
-    }).then((response) => {
-        res.status(200).json(response);
-    }).catch((error) => {
-        res.status(400).json(error);
-    });
+    //     },
+    //     orderBy: {
+    //         idchamados: 'desc'
+    //     }
+    // }).then((response) => {
+    //     res.status(200).json(response);
+    // }).catch((error) => {
+    //     res.status(400).json(error);
+    // });
 
 }
