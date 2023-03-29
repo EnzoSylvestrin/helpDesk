@@ -15,7 +15,7 @@ export default async function handle(req: any, res : any) {
       descricao: reqBody.descricao,
       duracao: reqBody.duracao,
       status: reqBody.status == "Pendente" ? 1 : 0,
-      createdAt: new Date()
+      //createdAt: new Date()
     }
   }).then(() => {
     res.status(200).json();

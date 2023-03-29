@@ -41,22 +41,22 @@ export default async function handle(req: any, res : any) {
         });
     }
 
-    if (filters.dataInicial && filters.dataFinal) {
-        whereClauses.push({
-            createdAt: {
-                gte: new Date(filters.dataInicial),
-                lte: new Date(filters.dataFinal),
-            },
-        });
-    }
-    else if (filters.dataInicial) {
-        whereClauses.push({
-            createdAt: {
-                gte: new Date(filters.dataInicial),
-                lte: new Date(),
-            }
-        })
-    }
+    // if (filters.dataInicial && filters.dataFinal) {
+    //     whereClauses.push({
+    //         createdAt: {
+    //             gte: new Date(filters.dataInicial),
+    //             lte: new Date(filters.dataFinal),
+    //         },
+    //     });
+    // }
+    // else if (filters.dataInicial) {
+    //     whereClauses.push({
+    //         createdAt: {
+    //             gte: new Date(filters.dataInicial),
+    //             lte: new Date(),
+    //         }
+    //     })
+    // }
 
     await prisma.chamados.findMany({
         where: {

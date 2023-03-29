@@ -36,7 +36,7 @@ export const Card = ({ Chamado }: CardProps) => {
     const listDados: string[] = [
         Chamado.cliente,
         Chamado.tipo,
-        FormatData(Chamado.createdAt),
+        Chamado.duracao, //FormatData(Chamado.createdAt),
         Chamado.duracao
     ]
 
